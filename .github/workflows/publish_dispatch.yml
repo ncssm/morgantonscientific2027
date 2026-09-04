@@ -1,0 +1,36 @@
+name: Publish all 2027 articles
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  publish-papers:
+    uses: curvenote/actions/.github/workflows/submit.yml@v1
+    with:
+      id-pattern-regex: '^morganton-2027-(?:[a-zA-Z0-9-_]{2,15})$'
+      venue: ncssm-mor
+      collection: '2027'
+      kind: original
+      path: papers/*
+      exclude: papers/_template
+      publish: true
+      include-unchanged: true
+      debug: true
+      comment-title: 'Curvenote Publish — Papers'
+    secrets:
+      CURVENOTE: ${{ secrets.CURVENOTE_TOKEN }}
+      GITHUB: ${{ secrets.GITHUB_TOKEN }}
+  publish-essays:
+    uses: curvenote/actions/.github/workflows/submit.yml@v1
+    with:
+      id-pattern-regex: '^morganton-2027-(?:[a-zA-Z0-9-_]{2,15})$'
+      venue: ncssm-mor
+      collection: '2027'
+      kind: essay
+      path: essays/*
+      publish: true
+      include-unchanged: true
+      debug: true
+      comment-title: 'Curvenote Publish — Essays'
+    secrets:
+      CURVENOTE: ${{ secrets.CURVENOTE_TOKEN }}
+      GITHUB: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,32 @@
+name: Resubmit all 2027 articles
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  resubmit-papers:
+    uses: curvenote/actions/.github/workflows/submit.yml@v1
+    with:
+      id-pattern-regex: '^morganton-2027-(?:[a-zA-Z0-9-_]{2,15})$'
+      venue: ncssm-mor
+      collection: '2027'
+      kind: original
+      path: papers/*
+      exclude: papers/_template
+      include-unchanged: true
+      comment-title: 'Curvenote Resubmit — Papers'
+    secrets:
+      CURVENOTE: ${{ secrets.CURVENOTE_TOKEN }}
+      GITHUB: ${{ secrets.GITHUB_TOKEN }}
+  resubmit-essays:
+    uses: curvenote/actions/.github/workflows/submit.yml@v1
+    with:
+      id-pattern-regex: '^morganton-2027-(?:[a-zA-Z0-9-_]{2,15})$'
+      venue: ncssm-mor
+      collection: '2027'
+      kind: essay
+      path: essays/*
+      include-unchanged: true
+      comment-title: 'Curvenote Resubmit — Essays'
+    secrets:
+      CURVENOTE: ${{ secrets.CURVENOTE_TOKEN }}
+      GITHUB: ${{ secrets.GITHUB_TOKEN }}

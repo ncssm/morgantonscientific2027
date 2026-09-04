@@ -1,0 +1,32 @@
+myst: v1
+kind: typst
+title: NCSSM Preface Template
+description: North Carolina School of Science and Mathematics Table of Contents and Editor Note Template
+template: template.typ
+files:
+  - template.typ
+  - papers.yml
+  - logo.png
+  - banner.jpg
+authors:
+  - name: Rowan Cockett
+    github: rowanc1
+    affiliations:
+      - Curvenote
+  - name: Franklin Koch
+    github: fwkoch
+    affiliations:
+      - Curvenote
+version: 0.0.1
+license: MIT
+tags:
+  - preprint
+  - article
+  - paper
+thumbnail: ./thumbnail.png
+github: https://github.com/curvenote-templates/ncssm
+doc:
+  - id: volume # Includes volume.number
+    required: true
+  - id: issue # Includes issue.doi
+    required: true

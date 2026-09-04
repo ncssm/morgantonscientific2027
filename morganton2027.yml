@@ -1,0 +1,13 @@
+version: 1
+project:
+  subject: Original Research Article
+  exports:
+    - id: typst-export
+      format: typst
+      template: https://github.com/curvenote-templates/ncssm.git
+      article: article.md
+      output: article.pdf
+  downloads:
+    - title: Download PDF
+      id: typst-export
+extends: ./frontmatter/volume.yml

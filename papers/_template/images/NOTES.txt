@@ -1,0 +1,5 @@
+Put every figure for this article in this folder.
+
+  - Forward slashes in paths. Windows backslashes fail on the Linux runner.
+  - Full resolution: 300 dpi, or at least 2000 px on the long edge.
+  - Tables belong in article.md as Markdown tables, never as screenshots.

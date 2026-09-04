@@ -1,0 +1,36 @@
+name: Curvenote Preview Draft from PR
+on:
+  pull_request_target:
+    branches: [main]
+    types: [labeled, opened, synchronize, reopened]
+permissions:
+  contents: read
+  pull-requests: write
+jobs:
+  preview-papers:
+    uses: curvenote/actions/.github/workflows/draft.yml@v1
+    with:
+      id-pattern-regex: '^morganton-2027-(?:[a-zA-Z0-9-_]{2,15})$'
+      venue: ncssm-mor
+      collection: '2027'
+      kind: original
+      path: papers/*
+      exclude: papers/_template
+      label: draft
+      comment-title: 'Curvenote Preview — Papers'
+    secrets:
+      CURVENOTE: ${{ secrets.CURVENOTE_TOKEN }}
+      GITHUB: ${{ secrets.GITHUB_TOKEN }}
+  preview-essays:
+    uses: curvenote/actions/.github/workflows/draft.yml@v1
+    with:
+      id-pattern-regex: '^morganton-2027-(?:[a-zA-Z0-9-_]{2,15})$'
+      venue: ncssm-mor
+      collection: '2027'
+      kind: essay
+      path: essays/*
+      label: draft
+      comment-title: 'Curvenote Preview — Essays'
+    secrets:
+      CURVENOTE: ${{ secrets.CURVENOTE_TOKEN }}
+      GITHUB: ${{ secrets.GITHUB_TOKEN }}

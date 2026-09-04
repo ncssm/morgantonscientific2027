@@ -1,0 +1,38 @@
+version: 1
+project:
+  banner: ../../templates/ncssm-preface/banner.jpg
+  github: https://github.com/ncssm/morgantonscientific2027
+  open_access: true
+  license: CC-BY-4.0
+  # TODO(2027): set the publication date once the editors fix it. Every article
+  # inherits this; none should set its own `date:`. Volume 3 was 2026-09-01.
+  date: 2027-06-01
+  venue:
+    title: Morganton Scientific
+    url: https://morgantonscientific.ncssm.edu
+    doi: 10.62329/TJYM8050
+  abbreviations:
+    NCSSM: North Carolina School of Science and Mathematics
+  funding:
+    statement: Funding for this program is provided by the North Carolina School of Science and Mathematics, the University of North Carolina General Administration, and the General Assembly for the State of North Carolina.
+  affiliations:
+    - id: ncssm
+      institution: North Carolina School of Science and Mathematics
+      address: 901 Burkemont Ave
+      city: Morganton
+      region: North Carolina
+      country: United States
+      postal_code: 28655
+      phone: 828-347-9100
+      ror: https://ror.org/03zbydc22
+  volume:
+    number: 4
+  # TODO(2027): the issue DOI is minted by Curvenote and must be filled in before
+  # scripts/make_pdfs.sh will run — the preface template requires `issue` and
+  # prints the DOI on the cover. Do NOT carry over a previous volume's value;
+  # that would file this volume's articles under the wrong issue record.
+  # Volume 3 was 10.62329/jnwd8866, Volume 2 was 10.62329/dwgm3685.
+  # issue:
+  #   doi:
+site:
+  template: https://github.com/myst-templates/article-theme.git

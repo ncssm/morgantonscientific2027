@@ -1,0 +1,12 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  last_page: 6
+  title: Essays
+  first_page: 6
+  exports:
+    - format: typst
+      template: ../../templates/ncssm-divider
+      output: divider.pdf
+      options:
+        section: essays

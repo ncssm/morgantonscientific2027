@@ -1,0 +1,30 @@
+version: 1
+project:
+  id: morganton-2027-vol-4
+  title: Morganton Scientific - Volume 4
+  banner: ../templates/ncssm-preface/banner.jpg
+  thumbnail: ../templates/ncssm-preface/logo.png
+  description: |
+    The Morganton Scientific showcases some of the most
+    interesting and complex math- and science-centered
+    research projects explored by students at NCSSM.
+    We are a public high school where talented students
+    realize their potential and find their niche.
+  # TODO(2027): replace with this volume's Editors-in-Chief, matching the names
+  # in the Editors' Note. Volume 3's were Henry Chen, Clara Lappan and Alex Qu.
+  # Emails and ORCIDs have never been supplied for editors; adding them would be
+  # an improvement.
+  authors:
+    - name: TODO Editor One
+      affiliation: ncssm
+  downloads:
+    - title: Download Full PDF
+      format: pdf
+      url: ../morganton2027.pdf
+      filename: morganton2027.pdf
+  exports:
+    - format: typst
+      template: ../templates/ncssm-preface
+      article: article.md
+      output: article.pdf
+extends: volume.yml

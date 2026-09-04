@@ -1,0 +1,31 @@
+myst: v1
+kind: typst
+title: NCSSM Divider Template
+description: North Carolina School of Science and Mathematics Section Divider page template
+template: template.typ
+files:
+  - template.typ
+  - logo.png
+authors:
+  - name: Rowan Cockett
+    github: rowanc1
+    affiliations:
+      - Curvenote
+  - name: Franklin Koch
+    github: fwkoch
+    affiliations:
+      - Curvenote
+version: 0.0.1
+license: MIT
+tags:
+  - preprint
+  - article
+  - paper
+thumbnail: ./thumbnail.png
+github: https://github.com/curvenote-templates/ncssm
+options:
+  - id: section
+    type: string
+    required: true
+doc:
+  - id: first_page

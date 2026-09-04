@@ -1,0 +1,57 @@
+# Copy this folder to papers/<lastname>/ and fill it in.
+# Folder name: lowercase, no spaces, no "&" — the workflows glob papers/*.
+version: 1
+extends:
+  - ../../morganton2027.yml
+project:
+  # Must match ^morganton-2027-[a-zA-Z0-9_-]{2,15}$ — the suffix is capped at
+  # 15 characters, so "chenchu-bordoloi" (16) has to be shortened. It does not
+  # have to match the folder name.
+  id: morganton-2027-CHANGEME
+
+  # A real figure from the article. Use ../../templates/ncssm-preface/logo.png
+  # if there is no suitable image.
+  thumbnail: "images/CHANGEME.png"
+
+  # Must be byte-identical to the `title:` in article.md.
+  title: >-
+    CHANGEME
+
+  # 2-4 sentences, ~40-60 words, plain ASCII. No markdown emphasis, spell out
+  # Greek letters. It is reused where markup will not render.
+  description: >-
+    CHANGEME
+
+  # Maximum 5. Also checked for uniqueness across the whole collection, so
+  # coordinate with the other articles.
+  keywords:
+    - CHANGEME
+
+  authors:
+    # Must be a list — every entry starts "- name:".
+    - name: CHANGEME
+      email: CHANGEME@ncssm.edu
+      # Full form, e.g. 0009-0006-7158-659X. Verify the check digit.
+      orcid: CHANGEME
+      # Lower-case "ncssm". "NCSSM" silently creates a second, bare affiliation
+      # and drops the address, phone and ROR ID that feed the Crossref record.
+      affiliation: ncssm
+      corresponding: true
+      # CRediT. Required by the venue and not waivable from here — see
+      # docs/layout-editor-guide.md. Collect these at submission.
+      roles:
+        - Investigation
+        - Writing – original draft
+
+  # Biology, Chemistry, Physics, Engineering, Public Health, Computer Science
+  subject: CHANGEME
+
+  # A mapping, KEY: expansion — not a list of dashes. List only abbreviations
+  # actually used in the text.
+  abbreviations:
+    CHANGEME: CHANGEME
+
+# Do NOT add:
+#   site:                    — the theme comes from the volume config
+#   doi:                     — Curvenote mints these and adds them itself
+#   first_page / last_page   — scripts/make_pdfs.sh writes these

@@ -1,0 +1,12 @@
+_build
+.ipynb_checkpoints
+*.bak
+.DS_Store
+template.pdf
+divider.pdf
+
+article.pdf
+morganton2027.pdf
+
+# local working document, not part of the published volume
+REVIEW.md
