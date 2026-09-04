@@ -9,6 +9,7 @@ grounded in what actually needed fixing that year rather than general advice.
 | [Copy Editor's Checklist](copy-editor-checklist.md) | Content review | Completeness checks, figure and table handling, author metadata, and the house style guide |
 | [Layout Editor's Guide](layout-editor-guide.md) | MyST conversion | `myst.yml` and `article.md` structure, cross-references, citations, verification, and the Volume 3 mistake table |
 | [Volume 4 workflow](volume-4-workflow.md) | Everyone | How this volume gets made, intake through publication |
+| [Reference](reference.md) | Everyone | Identifiers, DOIs, editors, and the things that are not obvious from the code |
 
 ## Why these exist
 

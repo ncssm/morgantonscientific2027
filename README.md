@@ -28,6 +28,7 @@ morganton2027.yml      shared config; every article extends it
 | [Copy Editor's Checklist](docs/copy-editor-checklist.md) | Content review and house style |
 | [Layout Editor's Guide](docs/layout-editor-guide.md) | MyST conversion, and 24 real mistakes from Volume 3 |
 | [Volume 4 workflow](docs/volume-4-workflow.md) | How the whole thing runs this year |
+| [Reference](docs/reference.md) | Identifiers, issue DOIs, editors, and non-obvious behaviour |
 
 ## Adding an article
 
