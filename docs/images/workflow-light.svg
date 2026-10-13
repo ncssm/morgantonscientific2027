@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 960" width="760" height="960" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" role="img" aria-label="An article loops until it is right, and only the merge submits it">
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#b5b2aa"/></marker></defs>
+<text x="24" y="34" font-size="15" font-weight="600" fill="#1f1e1c" text-anchor="start">An article loops until it is right, and only the merge submits it</text>
+<text x="24" y="54" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start">Dashed outline: before the article reaches GitHub · grey italics: not set up yet</text>
+<text x="60" y="82" font-size="11.5" font-weight="600" fill="#6b6a66" text-anchor="start">Stage, who acts, and where it happens</text>
+<text x="502" y="82" font-size="11.5" font-weight="600" fill="#6b6a66" text-anchor="start">Happens automatically</text>
+<path d="M265 168V190" fill="none" stroke="#b5b2aa" stroke-width="1.25" marker-end="url(#arrow)"/>
+<path d="M265 264V286" fill="none" stroke="#b5b2aa" stroke-width="1.25" marker-end="url(#arrow)"/>
+<path d="M265 360V382" fill="none" stroke="#b5b2aa" stroke-width="1.25" marker-end="url(#arrow)"/>
+<path d="M265 456V478" fill="none" stroke="#b5b2aa" stroke-width="1.25" marker-end="url(#arrow)"/>
+<path d="M265 552V574" fill="none" stroke="#b5b2aa" stroke-width="1.25" marker-end="url(#arrow)"/>
+<path d="M265 648V670" fill="none" stroke="#b5b2aa" stroke-width="1.25" marker-end="url(#arrow)"/>
+<path d="M265 744V766" fill="none" stroke="#b5b2aa" stroke-width="1.25" marker-end="url(#arrow)"/>
+<path d="M265 840V862" fill="none" stroke="#b5b2aa" stroke-width="1.25" marker-end="url(#arrow)"/>
+<text x="275" y="856" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start">once every article is in</text>
+<path d="M60 516H36" fill="none" stroke="#b5b2aa" stroke-width="1.25"/>
+<path d="M60 612H36" fill="none" stroke="#b5b2aa" stroke-width="1.25"/>
+<path d="M60 708H36" fill="none" stroke="#b5b2aa" stroke-width="1.25"/>
+<path d="M36 708V420H59" fill="none" stroke="#b5b2aa" stroke-width="1.25" marker-end="url(#arrow)"/>
+<text x="26" y="564.0" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="middle" transform="rotate(-90 26 564.0)">check fails or changes requested: fix and push</text>
+<rect x="60" y="96" width="410" height="72" rx="8" fill="none" stroke="#b5b2aa" stroke-width="1.25" stroke-dasharray="5 4"/>
+<text x="76" y="120" font-size="13" font-weight="600" fill="#1f1e1c" text-anchor="start">1. Submission</text>
+<text x="76" y="138" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">Student author fills in the intake Google Form</text>
+<text x="76" y="154" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start">Who: student author · Not on GitHub: a Google Form</text>
+<line x1="470" y1="132" x2="502" y2="132" stroke="#b5b2aa" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="502" y="96" width="234" height="72" rx="8" fill="#efeeea" stroke="#d9d6cf" stroke-width="1"/>
+<text x="518" y="128" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start" font-style="italic">Answers land in the intake Sheet</text>
+<text x="518" y="146" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start" font-style="italic">Uploads land in the form&#x27;s Drive</text>
+<rect x="60" y="192" width="410" height="72" rx="8" fill="none" stroke="#b5b2aa" stroke-width="1.25" stroke-dasharray="5 4"/>
+<text x="76" y="216" font-size="13" font-weight="600" fill="#1f1e1c" text-anchor="start">2. Manuscript folder</text>
+<text x="76" y="234" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">Editor puts manuscript, figures, .bib and code in one folder</text>
+<text x="76" y="250" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start">Who: an editor · Not on GitHub: a shared Drive folder</text>
+<line x1="470" y1="228" x2="502" y2="228" stroke="#b5b2aa" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="502" y="192" width="234" height="72" rx="8" fill="#efeeea" stroke="#d9d6cf" stroke-width="1"/>
+<text x="518" y="224" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">Nothing: done by hand, because</text>
+<text x="518" y="242" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">uploads arrive sorted by question</text>
+<rect x="60" y="288" width="410" height="72" rx="8" fill="none" stroke="#b5b2aa" stroke-width="1.25"/>
+<text x="76" y="312" font-size="13" font-weight="600" fill="#1f1e1c" text-anchor="start">3. Intake</text>
+<text x="76" y="330" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">Copy editor opens a “New article” issue with the folder link</text>
+<text x="76" y="346" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start">Who: copy editor · On GitHub: an issue, assigned to themselves</text>
+<line x1="470" y1="324" x2="502" y2="324" stroke="#b5b2aa" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="502" y="288" width="234" height="72" rx="8" fill="#efeeea" stroke="#d9d6cf" stroke-width="1"/>
+<text x="518" y="320" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start" font-style="italic">Card lands in Intake on the board</text>
+<text x="518" y="338" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">Assigning notifies the next editor</text>
+<rect x="60" y="384" width="410" height="72" rx="8" fill="none" stroke="#b5b2aa" stroke-width="1.25"/>
+<text x="76" y="408" font-size="13" font-weight="600" fill="#1f1e1c" text-anchor="start">4. Conversion</text>
+<text x="76" y="426" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">Layout editor opens a PR from article/smith-jones, adds draft</text>
+<text x="76" y="442" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start">Who: the assigned layout editor · On GitHub: branch and PR</text>
+<line x1="470" y1="420" x2="502" y2="420" stroke="#b5b2aa" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="502" y="384" width="234" height="72" rx="8" fill="#efeeea" stroke="#d9d6cf" stroke-width="1"/>
+<text x="518" y="416" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start" font-style="italic">Card moves to In conversion</text>
+<text x="518" y="434" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">Issue and PR linked by Closes #</text>
+<rect x="60" y="480" width="410" height="72" rx="8" fill="none" stroke="#b5b2aa" stroke-width="1.25"/>
+<text x="76" y="504" font-size="13" font-weight="600" fill="#1f1e1c" text-anchor="start">5. Checks</text>
+<text x="76" y="522" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">Manuscript check and Curvenote checks run on every push</text>
+<text x="76" y="538" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start">Who: nobody · On GitHub: the Checks tab</text>
+<line x1="470" y1="516" x2="502" y2="516" stroke="#b5b2aa" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="502" y="480" width="234" height="72" rx="8" fill="#efeeea" stroke="#d9d6cf" stroke-width="1"/>
+<text x="518" y="512" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">Bot comment explains each problem</text>
+<text x="518" y="530" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">Curvenote posts the preview link</text>
+<rect x="60" y="576" width="410" height="72" rx="8" fill="none" stroke="#b5b2aa" stroke-width="1.25"/>
+<text x="76" y="600" font-size="13" font-weight="600" fill="#1f1e1c" text-anchor="start">6. Author proof</text>
+<text x="76" y="618" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">Author reads the Curvenote preview and replies by email</text>
+<text x="76" y="634" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start">Who: author, via an editor · On GitHub: a tick on the issue</text>
+<line x1="470" y1="612" x2="502" y2="612" stroke="#b5b2aa" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="502" y="576" width="234" height="72" rx="8" fill="#efeeea" stroke="#d9d6cf" stroke-width="1"/>
+<text x="518" y="608" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start" font-style="italic">needs-author label shows the wait</text>
+<text x="518" y="626" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start" font-style="italic">on the board</text>
+<rect x="60" y="672" width="410" height="72" rx="8" fill="none" stroke="#b5b2aa" stroke-width="1.25"/>
+<text x="76" y="696" font-size="13" font-weight="600" fill="#1f1e1c" text-anchor="start">7. Copy edit</text>
+<text x="76" y="714" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">Copy editor&#x27;s read-through of the preview (checklist Part 5)</text>
+<text x="76" y="730" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start">Who: copy editor · On GitHub: a requested PR review</text>
+<line x1="470" y1="708" x2="502" y2="708" stroke="#b5b2aa" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="502" y="672" width="234" height="72" rx="8" fill="#efeeea" stroke="#d9d6cf" stroke-width="1"/>
+<text x="518" y="704" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">Approval counts toward the rule</text>
+<text x="518" y="722" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">that protects main</text>
+<rect x="60" y="768" width="410" height="72" rx="8" fill="#e6eefb" stroke="#2f6fdd" stroke-width="2"/>
+<text x="76" y="792" font-size="13" font-weight="600" fill="#1f1e1c" text-anchor="start">8. Merge</text>
+<text x="76" y="810" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">Merging submits this one article to Curvenote</text>
+<text x="76" y="826" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start">Who: Editor-in-Chief · On GitHub: the Merge button</text>
+<line x1="470" y1="804" x2="502" y2="804" stroke="#b5b2aa" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="502" y="768" width="234" height="72" rx="8" fill="#efeeea" stroke="#d9d6cf" stroke-width="1"/>
+<text x="518" y="800" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">submit.yml sends it to Curvenote</text>
+<text x="518" y="818" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">Issue closes when the PR merges</text>
+<rect x="60" y="864" width="410" height="72" rx="8" fill="none" stroke="#b5b2aa" stroke-width="1.25"/>
+<text x="76" y="888" font-size="13" font-weight="600" fill="#1f1e1c" text-anchor="start">9. Volume assembly and publish</text>
+<text x="76" y="906" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">Front matter, cover, issue DOI, print PDF, then publish</text>
+<text x="76" y="922" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start">Who: Editors-in-Chief · On GitHub: one assembly issue</text>
+<line x1="470" y1="900" x2="502" y2="900" stroke="#b5b2aa" stroke-width="1" stroke-dasharray="3 3"/>
+<rect x="502" y="864" width="234" height="72" rx="8" fill="#efeeea" stroke="#d9d6cf" stroke-width="1"/>
+<text x="518" y="896" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start" font-style="italic">pdf.yml builds the print PDF</text>
+<text x="518" y="914" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start" font-style="italic">Readiness check gates publishing</text>
+</svg>

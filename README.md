@@ -12,45 +12,12 @@ Two steps happen before an article reaches GitHub; the rest happen on the articl
 pull request. Only the merge has consequences: it submits the article to Curvenote. A failed check
 or a requested change sends the article back to the layout editor, on the same pull request.
 
-```mermaid
-flowchart TD
-    subgraph before["Before GitHub"]
-        submit["<b>Submission</b><br/>student author"]
-        folder["<b>Manuscript folder</b><br/>an editor"]
-    end
-    subgraph github["On GitHub"]
-        intake["<b>Intake</b><br/>copy editor"]
-        convert["<b>Conversion</b><br/>layout editor"]
-        checks["<b>Checks</b><br/>automatic"]
-        proof["<b>Author proof</b><br/>author, by email"]
-        copyedit["<b>Copy edit</b><br/>copy editor"]
-        merge["<b>Merge</b><br/>submits to Curvenote"]
-    end
-    volume["<b>Volume assembly and publication</b><br/>Editors-in-Chief"]
-
-    submit --> folder --> intake --> convert --> checks --> proof --> copyedit --> merge
-    merge -- "once every article is in" --> volume
-    checks -. "a check fails" .-> convert
-    proof -. "changes needed" .-> convert
-    copyedit -. "changes requested" .-> convert
-
-    classDef offGitHub stroke-dasharray: 5 4
-    classDef submits stroke-width: 3px
-    class submit,folder offGitHub
-    class merge submits
-```
-
-| Step | Who | Where | What happens |
-|---|---|---|---|
-| Submission | Student author | The intake Google Form | Answers land in a Sheet, uploads in Drive |
-| Manuscript folder | An editor | Google Drive | The manuscript, figures, `.bib` file and any code go into one folder for the article |
-| Intake | Copy editor | A *New article* issue | Opened with the folder link; the copy editor chases anything missing, then assigns the layout editor |
-| Conversion | Layout editor | A pull request with the `draft` label | Its description links back to the issue |
-| Checks | Automatic | The pull request | The manuscript check and Curvenote's checks run on every push and post their results and the preview link |
-| Author proof | Author, via an editor | Email, then the issue | The author reads the Curvenote preview; an editor ticks *Author proof* |
-| Copy edit | Copy editor | A review on the pull request | Read against the [checklist](docs/copy-editor-checklist.md), Part 5, then approved |
-| Merge | Editor-in-Chief | The pull request | `submit.yml` sends the article to Curvenote, and the issue closes |
-| Volume assembly | Editors-in-Chief | This repository | Front matter, cover, issue DOI and print PDF, then `publish_dispatch.yml` and the website |
+<!-- Drawn by scripts/workflow_diagram.py. To change it, edit the list of stages at the top of
+     that script and run `python3 scripts/workflow_diagram.py`; don't edit the SVGs by hand. -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/workflow-dark.svg">
+  <img alt="The nine stages: submission and the manuscript folder before GitHub, then intake, conversion, checks, author proof, copy edit and merge on the article's issue and pull request, then volume assembly. A failed check or a requested change loops back to conversion." src="docs/images/workflow-light.svg">
+</picture>
 
 The [Volume 4 workflow](docs/volume-4-workflow.md) explains each step, and the role guides below
 say how to do them.
