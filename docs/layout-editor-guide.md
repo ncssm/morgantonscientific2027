@@ -391,6 +391,11 @@ blocking, so you see problems before anything is submitted.
 
 **One article per PR.** It keeps each review small and gives each article its own check history.
 
+You start an article when its copy editor assigns you its issue. In the PR's description, write
+`Closes #` and the issue's number, so merging the PR closes the issue. Once the checks are green,
+request the copy editor's review on the PR (**Reviewers**, in the PR's sidebar) for their
+read-through.
+
 ---
 
 ## 8. Common mistakes
