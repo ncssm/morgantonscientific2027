@@ -194,14 +194,43 @@ statistics, and small digits are easy to misread.
 
 ## 5. Cross-references
 
-Every figure and table reference in the prose becomes a live cross-reference:
+A cross-reference is a link from the text to a figure or table. MyST fills in the number itself, so
+if a figure is added, removed or moved, every reference to it updates.
+
+It takes two pieces: a `:name:` on the figure or table, and `@` followed by that name in the text.
+
+````markdown
+```{figure} images/climbing.png
+:name: Figure_1
+:align: center
+
+Climbing performance after 10 days on each diet. Bars show mean ± SEM, n = 8 vials per group.
+```
+
+Climbing performance declined at the highest dose (@Figure_1), while survival was
+unchanged (@Table_1). @Figure_1 also shows a small effect at the lowest dose.
+````
+
+Renders as:
+
+> Climbing performance declined at the highest dose (Figure 1), while survival was unchanged
+> (Table 1). Figure 1 also shows a small effect at the lowest dose.
+
+Each "Figure 1" and "Table 1" is a link to the figure or table. MyST writes the word "Figure" or
+"Table" for you, so **don't type it yourself**: `Figure @Figure_1` renders "Figure Figure 1".
+
+### Converting what the author wrote
+
+Find every figure and table mentioned in the prose, and replace the typed number with the name:
 
 | Author wrote | Convert to | Renders |
 |---|---|---|
-| `Figure 1` | `@Figure_1` | Figure 1 |
-| `Table 2` | `@Table_2` | Table 2 |
+| `(Figure 1)` | `(@Figure_1)` | (Figure 1) |
+| `as shown in Table 2` | `as shown in @Table_2` | as shown in Table 2 |
+| `(Fig. 3)` | `(@Figure_3)` | (Figure 3) |
+| `Figures 2 and 3 show` | `@Figure_2 and @Figure_3 show` | Figure 2 and Figure 3 show |
 
-Never leave a hard-coded number — it won't renumber, and reordering silently breaks it.
+Never leave a typed number — it won't renumber, and reordering silently breaks it.
 
 **Check the mapping by content, not arithmetic.** Author numbering is sometimes off, occasionally by
 one for an entire paper. Read the sentence, read the caption, and confirm they describe the same
@@ -215,15 +244,75 @@ convert to `@Figure_3`.
 
 ## 6. Citations
 
-**`[@key]` throughout.** Convert everything else:
+A citation also takes two pieces: an entry in the article's `refs.bib`, and that entry's **key** in
+the text. The key is the first thing after the opening brace:
+
+```bibtex
+@article{smith_caffeine_2020,
+  title   = {Caffeine and locomotion in Drosophila},
+  author  = {Smith, Jordan and Lee, Ana},
+  journal = {Journal of Insect Physiology},
+  year    = {2020}
+}
+```
+
+The key here is `smith_caffeine_2020`. A reference manager such as Zotero makes these when it exports
+the `.bib` file; you don't write them by hand.
+
+There are three ways to cite, and between them they cover almost every sentence:
+
+| You want | Write | Renders as |
+|---|---|---|
+| One source, in parentheses | `[@smith_caffeine_2020]` | (Smith & Lee, 2020) |
+| Several sources in one parenthesis | `[@smith_caffeine_2020; @jones_sleep_2019]` | (Smith & Lee, 2020; Jones, 2019) |
+| The authors as part of the sentence | `@smith_caffeine_2020 found that…` | Smith & Lee (2020) found that… |
+
+In a paragraph:
+
+```markdown
+Caffeine reduces climbing speed in adult flies [@smith_caffeine_2020], and high doses
+disrupt sleep [@jones_sleep_2019; @garcia_dose_2021]. @smith_caffeine_2020 proposed
+that the effect is mediated by adenosine receptors.
+```
+
+Renders as:
+
+> Caffeine reduces climbing speed in adult flies (Smith & Lee, 2020), and high doses disrupt sleep
+> (Jones, 2019; Garcia et al., 2021). Smith & Lee (2020) proposed that the effect is mediated by
+> adenosine receptors.
+
+The reference list at the end of the article is built automatically from the keys cited, so a `.bib`
+entry that is never cited doesn't appear in it.
+
+A few rules:
+
+- **The citation goes before the full stop**: `…adult flies [@smith_caffeine_2020].`
+- **Group with semicolons inside one pair of brackets**, `[@a; @b]` — not `[@a][@b]`, which renders
+  two parentheses side by side.
+- **The key must match the `.bib` exactly**, including capitals. A key with no matching entry gives a
+  build warning and a broken citation.
+
+### Converting what the author wrote
+
+Most manuscripts arrive with citations typed as plain text. Find the matching entry in `refs.bib`
+and replace the typed text with its key:
+
+| Author wrote | Convert to |
+|---|---|
+| `…adult flies (Smith & Lee, 2020).` | `…adult flies [@smith_caffeine_2020].` |
+| `(Smith & Lee, 2020; Jones, 2019)` | `[@smith_caffeine_2020; @jones_sleep_2019]` |
+| `Smith and Lee (2020) found…` | `@smith_caffeine_2020 found…` |
+
+If you can't find a matching entry, don't guess — ask the author for it.
+
+Manuscripts converted by a tool sometimes arrive in other MyST syntaxes. These render wrongly, so
+convert them too:
 
 | Found | Renders as | Convert to |
 |---|---|---|
 | `` ({cite}`a, b`) `` | "(Smith (2020)Jones (2019))" — brackets doubled, no separator between sources | `[@a; @b]` |
 | `(@key)` | "(Smith (2020))" — brackets doubled | `[@key]` |
 | `` {cite:p}`key` `` | varies | `[@key]` |
-
-Look for the `{cite:p}` variant too when converting; it's easy to miss.
 
 **Watch for citation loss when converting.** Some reference-manager exports put HTML from a title
 into the key, giving something like `smith_<span_2022`. It works inside `{cite}`, but the `<`
