@@ -112,7 +112,7 @@ This is the step Volumes 1–3 never really had, and it's where transcription er
 one person who can actually catch them.
 
 **Gate:** the author approves the preview. Students don't have GitHub accounts, so they reply by
-email, and an editor ticks *Author proof* on the article's issue and pastes the reply as a comment.
+email, and an editor checks off *Author proof* on the article's issue and pastes the reply as a comment.
 
 ### Stage 3 — Copy edit
 
