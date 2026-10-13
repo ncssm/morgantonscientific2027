@@ -22,6 +22,7 @@ Essays go in `essays/<lastname>/`, same structure.
 
 - **Lowercase, no spaces, no `&`.** The workflows find articles by matching `papers/*`, and a space or
   `&` breaks it. A co-authored paper from Smith and Jones goes in `papers/smith-jones/`.
+- **Use the name in the article's issue title.** The copy editor chose it when opening the issue.
 - **The image folder is always `images/`** — not `Figures/`, not `<name>_images/`.
 - Rename the folder *and* fix the paths inside `article.md` in the same pass. Renaming one without
   the other breaks every image.
@@ -391,7 +392,9 @@ blocking, so you see problems before anything is submitted.
 
 **One article per PR.** It keeps each review small and gives each article its own check history.
 
-You start an article when its copy editor assigns you its issue. In the PR's description, write
+You start an article when its copy editor assigns you its issue. The issue's title gives the folder
+name — **Article: smith-jones** means `papers/smith-jones/` and a branch called
+`article/smith-jones`. In the PR's description, write
 `Closes #` and the issue's number, so merging the PR closes the issue. Once the checks are green,
 request the copy editor's review on the PR (**Reviewers**, in the PR's sidebar) for their
 read-through.

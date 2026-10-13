@@ -6,6 +6,12 @@ body:
   - type: markdown
     attributes:
       value: |
+        **Name this issue after the article's folder.** Above, after "Article: ", type the lead
+        author's last name in lowercase, with no spaces or "&", and a hyphen between co-authors'
+        names, e.g. **Article: smith-jones**. The layout editor uses that name for the article's
+        folder, papers/smith-jones/. If an author has two articles this year, add a number:
+        smith1, smith2.
+
         This issue is the article's tracking card. Its checklists show what has been received and
         which stage the article has reached, and its comments are where questions for the author
         are recorded.
@@ -21,17 +27,6 @@ body:
         private here. Those stay in the intake form's spreadsheet, and the layout editor copies
         them into `myst.yml` from there.
 
-  - type: input
-    id: folder
-    attributes:
-      label: Folder name
-      description: >-
-        The lead author's last name, lowercase, with no spaces or "&". Use a hyphen for
-        co-authors. The article will live in a folder of that name, e.g. papers/smith-jones/.
-      placeholder: smith
-    validations:
-      required: true
-
   - type: dropdown
     id: section
     attributes:
@@ -45,8 +40,8 @@ body:
   - type: textarea
     id: title
     attributes:
-      label: Title
-      description: Exactly as the author wrote it.
+      label: Article title
+      description: The title as it will be published, exactly as the author wrote it.
     validations:
       required: true
 
