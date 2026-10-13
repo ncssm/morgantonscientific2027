@@ -103,12 +103,16 @@ body:
       required: true
 
   - type: input
-    id: manuscript
+    id: manuscript-folder
     attributes:
-      label: Manuscript
+      label: Manuscript folder
       description: >-
-        A link to the manuscript in the editors' shared folder. Make sure the link is shared
-        only with the editors.
+        A link to the article's Google Drive folder, holding everything the author sent: the
+        manuscript, figures, .bib file and any code or data. Make sure it's shared only with
+        the editors.
+      placeholder: https://drive.google.com/drive/folders/...
+    validations:
+      required: true
 
   - type: checkboxes
     id: received

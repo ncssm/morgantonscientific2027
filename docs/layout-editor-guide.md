@@ -353,7 +353,7 @@ Open the PR's **Checks** tab, or read the bot's comment on the PR. These are che
 
 The manuscript check posts its results as a comment on the PR, one row per problem, each with a
 link to the part of this guide that explains the fix. It updates the same comment on every push.
-**Errors** (❌) stop the PR merging once the check is required; **warnings** (⚠️), such as an
+**Errors** (❌) stop the PR merging; **warnings** (⚠️), such as an
 uncited bibliography entry, are worth a look but don't block.
 
 ### What only you can check
