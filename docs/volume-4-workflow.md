@@ -79,13 +79,23 @@ A short form, filled in once per article by the corresponding author:
 That's ten minutes for the author and eliminates four of Volume 3's blockers. A Google Form writing
 to a Sheet is entirely adequate — the layout editor copies fields into `myst.yml`.
 
+**The copy editor opens the article's issue** the day the manuscript arrives, using the *New
+article* issue form, and assigns themselves. They then make the first pass of the
+[copy editor's checklist](copy-editor-checklist.md) — Parts 1–4, on the manuscript itself — and
+chase the author for anything missing while the author is still around. When everything is in,
+they assign the layout editor on the issue in their place.
+
+**The issue's assignee is always whoever has the next action**, so "what am I waiting on" is
+answered by the issues assigned to you.
+
 **Gate:** no article enters the repository without a completed intake form.
 
 ### Stage 1 — Conversion
 
-A layout editor converts the manuscript to MyST following the existing
+The layout editor assigned on the issue converts the manuscript to MyST following the
 [layout editor guide](layout-editor-guide.md), and opens a PR: **one article, one folder, one PR**,
-`draft`-labelled.
+`draft`-labelled, with `Closes #<issue>` in its description so that merging closes the issue. Once
+the checks are green, they request the copy editor's review on the PR.
 
 **Gate:** CI green — Curvenote's metadata checks *and* the manuscript checks in §4.
 
@@ -102,11 +112,12 @@ one person who can actually catch them.
 
 ### Stage 3 — Copy edit
 
-The [copy editor's checklist](copy-editor-checklist.md) against the rendered preview. By now the
-mechanical checks have passed, so the copy editor is reading for sense, proportionate claims, and
-statistics that match their figures — not hunting for missing captions.
+The copy editor's second pass: Part 5 of the [checklist](copy-editor-checklist.md), the
+read-through, against the rendered preview. Completeness and house style were settled before
+conversion and the mechanical checks have passed, so the copy editor is reading for sense,
+proportionate claims, and statistics that match their figures — not hunting for missing captions.
 
-**Gate:** checklist complete, recorded on the PR.
+**Gate:** the copy editor approves the PR.
 
 ### Stage 4 — Merge
 

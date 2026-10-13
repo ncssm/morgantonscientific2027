@@ -1,5 +1,5 @@
 name: New article
-description: Start tracking a submission. Open one the day a manuscript arrives.
+description: For copy editors. Open one the day a manuscript arrives.
 title: "Article: "
 labels: ["article"]
 body:
@@ -8,7 +8,13 @@ body:
       value: |
         This issue is the article's tracking card. Its checklists show what has been received and
         which stage the article has reached, and its comments are where questions for the author
-        are recorded. Each stage is described in the
+        are recorded.
+
+        **The assignee is whoever has the next action.** The copy editor who opens this issue
+        assigns themselves. When everything under *Received* is in, they swap in the layout
+        editor, who converts the article and opens its pull request.
+
+        Each stage is described in the
         [Volume 4 workflow](https://github.com/ncssm/morgantonscientific2027/blob/main/docs/volume-4-workflow.md).
 
         **This repository is public.** Don't put email addresses, phone numbers or anything else
@@ -133,8 +139,9 @@ body:
         it. When the PR is opened, write "Closes #" and this issue's number in its description,
         so merging the PR closes this issue.
       options:
+        - label: "Handed off: layout editor assigned"
         - label: "Conversion: PR opened with the draft label"
         - label: "Checks: all checks green on the PR"
         - label: "Author proof: the author has approved the Curvenote preview"
-        - label: "Copy edit: checklist complete and the PR approved"
+        - label: "Copy edit: read-through done and the PR approved by the copy editor"
         - label: "Merged: submitted to Curvenote"
