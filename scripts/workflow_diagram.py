@@ -27,7 +27,7 @@ STAGES = [
      ["Card lands in Intake on the board", "Assigning notifies the next editor"]),
     ("4. Conversion", "Layout editor opens a PR from article/smith-jones, adds draft",
      "Who: the assigned layout editor · On GitHub: branch and PR",
-     ["Issue and PR linked by Closes #", "~Card moves itself to Conversion"]),
+     ["Issue and PR linked by Closes #", "Card moves itself to Conversion"]),
     ("5. Checks", "Manuscript check and Curvenote checks run on every push",
      "Who: nobody · On GitHub: the Checks tab",
      ["Bot comment explains each problem", "Curvenote posts the preview link"]),
