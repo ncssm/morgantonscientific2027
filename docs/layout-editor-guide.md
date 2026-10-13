@@ -219,9 +219,9 @@ convert to `@Figure_3`.
 
 | Found | Renders as | Convert to |
 |---|---|---|
-| `({cite}\`a, b\`)` | "(Smith **(2020)**Jones…)" — doubled, no separator | `[@a; @b]` |
-| `(@key)` | "(Smith **(2020)**)" | `[@key]` |
-| `{cite:p}\`key\`` | varies | `[@key]` |
+| `` ({cite}`a, b`) `` | "(Smith (2020)Jones (2019))" — brackets doubled, no separator between sources | `[@a; @b]` |
+| `(@key)` | "(Smith (2020))" — brackets doubled | `[@key]` |
+| `` {cite:p}`key` `` | varies | `[@key]` |
 
 Look for the `{cite:p}` variant too when converting; it's easy to miss.
 
