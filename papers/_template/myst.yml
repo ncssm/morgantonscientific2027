@@ -4,9 +4,9 @@ version: 1
 extends:
   - ../../morganton2027.yml
 project:
-  # Must match ^morganton-2027-[a-zA-Z0-9_-]{2,15}$ — the suffix is capped at
-  # 15 characters, so "chenchu-bordoloi" (16) has to be shortened. It does not
-  # have to match the folder name.
+  # morganton-2027- followed by 2 to 15 letters, digits, hyphens or
+  # underscores. Shorten long co-author names to fit. It does not have to
+  # match the folder name.
   id: morganton-2027-CHANGEME
 
   # A real figure from the article. Use ../../templates/ncssm-preface/logo.png
@@ -31,7 +31,7 @@ project:
     # Must be a list — every entry starts "- name:".
     - name: CHANGEME
       email: CHANGEME@ncssm.edu
-      # Full form, e.g. 0009-0006-7158-659X. Verify the check digit.
+      # Full form, e.g. 0000-0002-1825-0097. Verify the check digit.
       orcid: CHANGEME
       # Lower-case "ncssm". "NCSSM" silently creates a second, bare affiliation
       # and drops the address, phone and ROR ID that feed the Crossref record.

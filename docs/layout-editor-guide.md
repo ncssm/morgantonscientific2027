@@ -1,7 +1,8 @@
 # Morganton Scientific — Layout Editor's Guide
 
-Converting a copy-edited manuscript into MyST for Curvenote. Everything below is drawn from what
-actually went wrong preparing Volume 3 — the mistake table at the end is real, not hypothetical.
+Converting a copy-edited manuscript into MyST for Curvenote. The rules below are the ones that
+cause real breakage when missed; [section 8](#8-common-mistakes) collects the most common mistakes in
+one table.
 
 ---
 
@@ -17,15 +18,13 @@ papers/<lastname>/
 
 Essays go in `essays/<lastname>/`, same structure.
 
-**Folder naming rules — these bite:**
+**Folder naming rules:**
 
-- **Lowercase, no spaces.** The workflows glob `papers/*`, and a space or `&` breaks it. Two
-  co-authored papers arrived as `king & nguyen/` and `chenchu & bordoloi/` → `king-nguyen`,
-  `chenchu-bordoloi`.
-- **The image folder is `images/`.** Not `All Figures/`, not `<name>_images/`. Three articles used
-  each variant.
+- **Lowercase, no spaces, no `&`.** The workflows find articles by matching `papers/*`, and a space or
+  `&` breaks it. A co-authored paper from Smith and Jones goes in `papers/smith-jones/`.
+- **The image folder is always `images/`** — not `Figures/`, not `<name>_images/`.
 - Rename the folder *and* fix the paths inside `article.md` in the same pass. Renaming one without
-  the other is the single most common self-inflicted break.
+  the other breaks every image.
 
 ---
 
@@ -38,20 +37,20 @@ version: 1
 extends:
   - ../../morganton2027.yml
 project:
-  id: morganton-2027-quach
-  thumbnail: "images/smurf-assay.png"
+  id: morganton-2027-smith
+  thumbnail: "images/climbing-assay.png"
   title: >-
-    Evaluating the Attenuating Effects of LAB-Fermented Black Garlic
+    Effects of Dietary Caffeine on Climbing Behavior in Drosophila
   description: >-
     Two to four sentences: what the study did and what it found. Drives the
     listing card, search results and social previews.
   keywords:
-    - Black Garlic
-    - Inflammatory Bowel Disease
+    - Caffeine
+    - Negative Geotaxis
   authors:
-    - name: Andy Quach
-      email: quach26a@ncssm.edu
-      orcid: 0009-0005-4537-553X
+    - name: Jordan Smith
+      email: smith27j@ncssm.edu
+      orcid: 0000-0002-1825-0097
       affiliation: ncssm
       corresponding: true
       roles:
@@ -59,7 +58,6 @@ project:
         - Writing – original draft
   subject: Biology
   abbreviations:
-    IBD: Inflammatory Bowel Disease
     ROS: Reactive Oxygen Species
 ```
 
@@ -68,12 +66,12 @@ project:
 | Field | Notes |
 |---|---|
 | `extends` | **Always.** Without it the article inherits nothing — no venue, affiliations, licence, funding statement or PDF template. |
-| `id` | `morganton-2027-` followed by 2 to 15 letters, digits, hyphens or underscores. The **15-character cap catches people out** — `chenchu-bordoloi` is 16 and fails, so its id is `morganton-2027-chenchu`. The id doesn't have to match the folder name. |
-| `title` | Must be **identical** to the `title:` in `article.md`. Watch for stray words: two Volume 3 titles had " Platforms" appended from a neighbouring article. |
+| `id` | `morganton-2027-` followed by 2 to 15 letters, digits, hyphens or underscores. The **15-character cap catches people out** on co-authored papers — `garcia-robinson` fits, but `garcia-robinsons` is 16 and fails, so shorten it to something like `morganton-2027-garcia`. The id doesn't have to match the folder name. |
+| `title` | Must be **identical** to the `title:` in `article.md`. Watch for stray words pasted in from another article. |
 | `description` | 2–4 sentences, ~40–60 words. **Plain ASCII** — no markdown emphasis, spell out Greek letters and symbols. It's reused where markup won't render, so `*Drosophila*` would display its asterisks. |
 | `keywords` | **Maximum 5.** Also checked for uniqueness across the collection, so coordinate across the volume — two articles sharing a keyword will trip it. |
 | `subject` | Biology, Chemistry, Physics, Engineering, Public Health, Computer Science |
-| `authors` | Must be a **list** — every entry starts `- name:`. One Volume 3 file had a bare mapping, which silently fails to parse as an author list. |
+| `authors` | Must be a **list** — every entry starts `- name:`. Without the dashes it silently fails to parse as an author list. |
 | `affiliation` | **Lowercase `ncssm`**, matching the id in `frontmatter/volume.yml`. `NCSSM` creates a *second, bare* affiliation and silently drops the address, phone and **ROR ID** — which feed the Crossref record. |
 | `orcid` | Full form. Verify the check digit; a transposed digit points at a real other person. |
 | `roles` | CRediT. MyST validates and normalises against the taxonomy, so `writing-review-editing` resolves to `Writing – review & editing`. |
@@ -82,8 +80,8 @@ project:
 
 ### Do not include
 
-- **`site:`** — the theme comes from the volume config. Fourteen of fifteen submissions arrived with
-  a stray `site: template: book-theme`, which conflicts with it.
+- **`site:`** — the theme comes from the volume config, and a `site:` block in an article conflicts
+  with it. Some conversion tools add `site: template: book-theme` automatically; delete it.
 - **`doi:`** — leave it out while preparing. Curvenote mints article DOIs and then adds them to each
   `myst.yml`, so a finished volume *does* carry a `doi:` per article. Don't invent one, and don't
   copy last year's.
@@ -92,56 +90,34 @@ project:
 
 ### `error_rules` — waiving a check with a reason
 
+Occasionally a Curvenote check fails for a legitimate reason — a 17th-century book has no DOI, for
+example. `error_rules` lets you say so:
+
 ```yaml
   error_rules:
     - rule: doi-exists
       severity: ignore
-      keys: [descartes2017discourse, chalmers2014mind]
-    - rule: authors-have-credit-roles
-      severity: warn
+      keys: [descartes2017discourse]  # 1637 treatise; no DOI exists
 ```
 
 Rule ids include `abstract-exists`, `authors-exist`, `authors-corresponding`,
 `authors-have-affiliations`, `authors-have-orcid`, `authors-have-credit-roles`, `doi-exists`,
 `doi-link-valid`.
 
-**Severity is one of exactly three values: `ignore`, `warn`, `error`.** Not `warning` — that is
-rejected as an invalid value, and the *entire rule is discarded*, so the check silently reverts to
-`error` and fails. Volume 3 lost a full round of CI to this. The rejection does appear in the log
-(`⛔️ myst.yml 'severity' invalid value`), but it scrolls past well above the check results, so what
-you notice is a check you thought you had waived still failing.
+- **Severity is exactly `ignore`, `warn` or `error`.** Any other value, including `warning`, makes
+  Curvenote discard the whole rule, so the check fails as if you had written nothing.
+- **`warn` keeps the gap visible** in every check run; `ignore` hides it. Either way, leave a comment
+  saying why.
+- **Declare it in each article's `myst.yml`.** It does not carry over from the volume config.
 
-**Prefer `warn` to `ignore`.** A warning keeps the gap visible in every check run; `ignore` makes it
-vanish. Always leave a comment saying why.
+**It cannot waive a check the venue requires.** `doi-exists` is waivable, because whether a source
+has a DOI is a fact the author can vouch for. `authors-have-credit-roles` is not: the venue requires
+every author to declare their contribution, and no setting here changes that.
 
-This must be declared **per article** — a single central declaration was tested and did not
-propagate.
-
-### What `error_rules` cannot do
-
-**It cannot waive a check the venue marks as required.** `error_rules` is submitter-side, so it only
-reaches checks about facts the submitter owns. `doi-exists` is waivable — "this 1637 treatise has no
-DOI" is a legitimate claim for an author to make. `authors-have-credit-roles` is not: whether
-contributions must be declared is the venue's policy, not the submitter's.
-
-Volume 3 established this the hard way. With `authors-have-credit-roles` the check failed identically
-under `warn` **and** under `ignore`, while `doi-exists: ignore` worked in the very same run:
-
-```
-❯ frontmatter (13/14 tests passed)
-    × CRediT Roles: Akhilesh Karthik does not have any CRediT Roles
-❯ content (4/5 tests passed, 1 optional)
-    ↓ DOI Exists: Citation without DOI explicitly ignored: descartes2017discourse
-```
-
-Note the two shapes: a waived check becomes **optional** (`↓`) and stops counting; an unwaivable one
-stays **failed** (`×`). Watch the per-section tally, not the banner — the banner reads
-`Curvenote Checks ✓✓✓ 🚀` even when a check has failed and the job exits 1.
-
-**An unrecognized or unwaivable rule id fails silently** — no "unknown rule" warning. A rule that
-does nothing looks exactly like a rule that works until you read the tally. If a waiver doesn't take
-effect, the remaining route is to ask Curvenote to change the check for the collection; there is
-nothing to fix in the repository.
+To tell whether a waiver worked, read the per-section tally in the check output, not the banner. A
+waived check shows as optional (`↓`); a check that still fails shows `×`. The banner can read
+`Curvenote Checks ✓✓✓ 🚀` even when a check has failed. An unknown or unwaivable rule id produces no
+warning at all — it simply has no effect — so if a waiver doesn't take, ask Curvenote.
 
 ---
 
@@ -161,8 +137,8 @@ Body text…
 ```
 
 - **Headings start at `##`.** The title comes from frontmatter; an `#` heading duplicates it.
-- **No `date:`** — the volume publication date is inherited. An article-level date silently
-  overrides it, and three Volume 3 articles would have shown February against everyone else's June.
+- **No `date:`** — the volume publication date is inherited, and an article-level date silently
+  overrides it.
 - **Don't end the file with `---`** — it renders as a stray horizontal rule.
 - **No `## Author Information` section.** Corresponding author and contributions belong in
   `myst.yml` as `corresponding: true` and `roles:`.
@@ -181,14 +157,13 @@ The caption goes here, after a blank line.
 ````
 
 - **`:name:`, never `:label:`.** MyST warns on `:label:` and it won't resolve as a reference target.
-  Twenty-four figures across four articles arrived using it.
 - **Never both** on the same figure — that registers two identifiers and produces duplicate-id
   warnings.
 - **Names are short slugs**: `Figure_1`, `Table_2`. Not prose, not spaces — `:name: Table 1` is not a
   valid identifier.
-- **Names must be unique.** One article labelled `fig5.png` as `:name: fig4`, colliding with the real
-  `fig4`.
-- **No space after the fence.** ` ``` {figure}` builds, but no prior volume does it.
+- **Names must be unique.** Copying a figure block and forgetting to change its `:name:` is the
+  usual cause of a duplicate.
+- **No space after the fence.** ` ``` {figure}` builds, but keep to ` ```{figure}` for consistency.
 
 ### Tables are `{table}`, not `{figure}`
 
@@ -205,14 +180,14 @@ The caption goes here, after a blank line.
 
 The caption is the **directive argument**, on the same line — unlike figures, where it's the content.
 
-If a submission includes a table as an image, transcribe it into a real Markdown table. Three
-Volume 3 "figures" were screenshots of statistical tables. **Read the values at high magnification**
-— transcribing from a 512 px screenshot produced several wrong digits before they were caught.
+If a table arrives as an image, ask the author for the data first. If you have to transcribe it,
+zoom in well and have a second person check every value against the image — these are published
+statistics, and small digits are easy to misread.
 
 ### Image paths
 
 - **Forward slashes.** Windows backslashes (`images\fig1.png`) work on the author's laptop and fail
-  on the Linux runner. Twenty-four paths across four articles.
+  on GitHub's Linux machines.
 - Verify every path resolves against the filesystem before building.
 
 ---
@@ -228,10 +203,8 @@ Every figure and table reference in the prose becomes a live cross-reference:
 
 Never leave a hard-coded number — it won't renumber, and reordering silently breaks it.
 
-**Check the mapping by content, not arithmetic.** Author numbering is often off. In one Volume 3
-paper every reference was off by one — "Figure 9" meant the eighth figure — which was only
-detectable by matching the reference text against the caption. Two more references in another paper
-pointed one figure too early. Read the sentence, read the caption, confirm they describe the same
+**Check the mapping by content, not arithmetic.** Author numbering is sometimes off, occasionally by
+one for an entire paper. Read the sentence, read the caption, and confirm they describe the same
 thing.
 
 If the author used an abbreviated form and you need to preserve it, MyST supports a template:
@@ -246,20 +219,20 @@ convert to `@Figure_3`.
 
 | Found | Renders as | Convert to |
 |---|---|---|
-| `({cite}\`a, b\`)` | "(Urban & Famini **(1993)**Goode…)" — doubled, no separator | `[@a; @b]` |
-| `(@key)` | "(Hertig & Wolbach **(1924)**)" | `[@key]` |
+| `({cite}\`a, b\`)` | "(Smith **(2020)**Jones…)" — doubled, no separator | `[@a; @b]` |
+| `(@key)` | "(Smith **(2020)**)" | `[@key]` |
 | `{cite:p}\`key\`` | varies | `[@key]` |
 
-Note the `{cite:p}` variant — a regex for `{cite}` alone will miss it.
+Look for the `{cite:p}` variant too when converting; it's easy to miss.
 
-**Watch for citation loss when converting.** One `.bib` had the key `polik_<span_2022`, generated
-from an HTML title by a bad Zotero export. It works inside `{cite}` but the `<` **silently drops the
-citation** under `@key` syntax. Rename malformed keys before converting, and compare citation counts
-before and after.
+**Watch for citation loss when converting.** Some reference-manager exports put HTML from a title
+into the key, giving something like `smith_<span_2022`. It works inside `{cite}`, but the `<`
+**silently drops the citation** under `@key` syntax. Rename such keys before converting, and compare
+citation counts before and after.
 
 Not every odd character breaks, though — don't rename on sight. Colons are fine:
-`zeng_drosophila:_2024` and `ma_corrigendum:_2021` both resolve correctly under `@key`. It is `<`
-that bites. Check the built output rather than guessing.
+`smith_drosophila:_2024` resolves correctly under `@key`. It is `<` that bites. Check the built
+output rather than guessing.
 
 MyST also resolves **raw DOI URLs** as citations. That's valid, but if the same work is also in the
 `.bib`, it appears **twice** in the reference list. Convert DOI-URL citations to their bib key where
@@ -283,87 +256,64 @@ Then check:
 - [ ] **No duplicate identifiers**
 - [ ] **Citation count unchanged** if you converted citation syntax
 - [ ] **Titles match** between `myst.yml` and `article.md`
-- [ ] **`id` matches the regex**, suffix ≤ 15 characters
+- [ ] **`id` has the right form** — `morganton-2027-`, then 15 characters or fewer
 - [ ] **Affiliation resolves** to the full NCSSM record with ROR ID, not a bare `NCSSM`
 - [ ] **Rendered cross-references read correctly** — inspect the built output, not the source
-- [ ] **No hand-numbered headings** — `### 3.1 Baseline Model Performance` gets numbered again by the
-      typeset PDF. Two Volume 3 articles carried 29 between them
-- [ ] **Dead links actually checked in a browser** — `HTTP 200` is not proof. A Qualcomm docs URL
-      returned 200 to `curl` while a real browser showed *"We could not find the page you
-      requested"*; the site is a JavaScript shell that serves an empty page with a success status
+- [ ] **No hand-numbered headings** — `### 3.1 Baseline Model Performance` gets numbered a second
+      time in the typeset PDF
+- [ ] **Links checked in a browser** — some sites load successfully but display "page not found",
+      so an automated link check can pass a dead link
 
-That last one matters most. Reading the source tells you what you wrote; only the build tells you
-what a reader sees. Renderer-supplied punctuation — the brackets around a citation group, the space
-in "Figure 1" — doesn't exist in the source at all.
+Reading the source tells you what you wrote; only the build tells you what a reader sees.
+Renderer-supplied punctuation — the brackets around a citation group, the space in "Figure 1" —
+doesn't exist in the source at all.
 
 ### Never push straight to `main`
 
-`submit.yml` fires on every push to `main` and submits everything. Work on a branch, open a PR,
+`submit.yml` fires on every push to `main` and submits to Curvenote. Work on a branch, open a PR,
 apply the **`draft`** label, and review the Curvenote preview. In draft mode checks report without
 blocking, so you see problems before anything is submitted.
 
-### Papers and essays in one push — resolved
-
-> **Historical note.** Volume 3 shipped as two PRs — papers first, then the essay — to work around
-> [curvenote/actions#57](https://github.com/curvenote/actions/issues/57), where calling the reusable
-> workflow twice in one run made each call's `summary` job crash on the other's artifacts. Every
-> article submitted correctly, but the run reported red.
->
-> **Curvenote fixed this in `v1.0.21` (2026-08-10), and `@v1` now resolves to it.** The split is no
-> longer necessary; a volume can go in as a single PR again.
-
-Two things carried over from that episode and are still worth keeping:
-
-- **Each job sets a distinct `comment-title`.** Without it the two calls post preview comments that
-  overwrite each other, so you can only ever see one group's previews. Configured in all four
-  workflow files.
-- **One article per PR is still the better habit** — not for the bug, but because it keeps review
-  units small and gives each article its own check history.
-
-If a `summary` job ever fails again with `Cannot read properties of undefined`, check whether the
-pinned action version has slipped backwards.
+**One article per PR.** It keeps each review small and gives each article its own check history.
 
 ---
 
-## 8. Mistakes from Volume 3
+## 8. Common mistakes
 
-Every one of these was real. If you're checking nothing else, check these.
+If you're checking nothing else, check these.
 
-| Mistake | Where | Effect |
-|---|---|---|
-| Windows backslashes in image paths | 4 articles, 24 paths | Images fail on the Linux runner |
-| `<name>_images/` or `All Figures/` folder | 6 articles | Every path broken after renaming |
-| `:label:` instead of `:name:` | 4 articles, 24 figures | No usable reference target |
-| Both `:name:` and `:label:` | 3 articles | Duplicate identifiers |
-| Hard-coded "Figure 1" in prose | 14 of 15 articles | Numbering never updates |
-| Figure references off by one | 2 articles | Wrong figure cited throughout |
-| `authors:` as a mapping not a list | karthik | Author list fails to parse |
-| `abbreviations:` as a list not a mapping | rivera | Shape error |
-| `Keywords:` capitalised | rivera | Field silently ignored |
-| `affiliation: NCSSM` (uppercase) | 8 articles | Drops address, phone, ROR ID |
-| Stray `site: template: book-theme` | 14 articles | Conflicts with the volume theme |
-| Article-level `date:` | 3 articles | Overrides the volume publication date |
-| Title mismatch between the two files | 4 articles | Inconsistent metadata |
-| Duplicate figure label | patel2 | Broken cross-reference |
-| Table submitted as a screenshot | stephan, 3 tables | Unsearchable, unprintable |
-| `{cite}` inside author's parentheses | 4 articles | Doubled brackets, no separator |
-| Malformed `.bib` key containing `<` | browning | Citation silently dropped on conversion |
-| Same work cited by key *and* DOI URL | friedman | Duplicate reference-list entry |
-| Trailing `---` at end of file | 2 articles | Stray horizontal rule |
-| Prose `## Author Information` section | 5 articles | Duplicates frontmatter |
-| `severity: warning` instead of `warn` | 10 articles | Rule discarded; check silently reverts to `error` |
-| Papers and essays pushed together | whole volume | `summary` jobs crashed; fixed upstream in actions v1.0.21 |
-| Hand-numbered headings | chenchu-bordoloi, sn | 29 headings numbered twice in the PDF |
-| Noto fonts missing when building the PDF | volume-wide | 160 pages rendered as 143; page numbers silently wrong |
-| Dead link returning HTTP 200 | sn | JS-shell docs site; only a real browser showed the 404 |
+| Mistake | Effect |
+|---|---|
+| Hard-coded "Figure 1" in prose | Numbering never updates |
+| Figure references off by one | Wrong figure cited throughout |
+| `:label:` instead of `:name:` | No usable reference target |
+| Both `:name:` and `:label:` | Duplicate identifiers |
+| Duplicate figure `:name:` | Broken cross-reference |
+| Windows backslashes in image paths | Images fail to load |
+| Image folder not called `images/` | Every path broken after renaming |
+| `affiliation: NCSSM` (uppercase) | Drops address, phone, ROR ID |
+| `authors:` without dashes | Author list fails to parse |
+| `abbreviations:` written as a list | Shape error |
+| `Keywords:` capitalised | Field silently ignored |
+| `site:` block in an article | Conflicts with the volume theme |
+| Article-level `date:` | Overrides the volume publication date |
+| Title differs between the two files | Inconsistent metadata |
+| Table submitted as a screenshot | Unsearchable, blurry in print |
+| `{cite}` inside the author's own parentheses | Doubled brackets, no separator |
+| `.bib` key containing `<` | Citation silently dropped |
+| Same work cited by key *and* DOI URL | Duplicate reference-list entry |
+| Hand-numbered headings | Numbered twice in the PDF |
+| Trailing `---` at end of file | Stray horizontal rule |
+| Prose `## Author Information` section | Duplicates the frontmatter |
+| Dead link that still loads | Reader lands on "page not found" |
 
 ---
 
 ## 9. The print PDF
 
-The typst export is exercised by **nothing** in the web build. Three Volume 3 problems reached final
-review because of that: page footers still reading the previous volume, a cover DOI that couldn't
-resolve, and a template calling a typst function that had been removed.
+Nothing in the web build or the Curvenote preview exercises the typst templates that make the print
+PDF, so print problems stay hidden until someone builds it — page footers still showing last year's
+volume number, for example.
 
 **Build the print PDF early**, not at the end. Run it from inside `scripts/` — every path in the
 script is relative to that folder, so `bash scripts/make_pdfs.sh` from the repo root fails:
@@ -383,10 +333,8 @@ npm install -g mystmd
 
 **The fonts are not optional, and leaving them out fails silently.** The template sets `Noto Sans`
 and `Noto Serif`. If they are missing, typst substitutes a fallback with different metrics — no
-error, no warning — and the different line breaking changes where pages end. Volume 3 was first
-built without them and came out **160 pages as 143**, with every article after the first paginated
-wrongly. The PDF looked entirely normal. Nothing but comparing against independently computed page
-numbers revealed it.
+error, no warning — and the different line breaking changes where pages end. The PDF looks entirely
+normal, but its page numbers are wrong.
 
 CI does not hit this: the workflows pass `fonts: fonts-noto` and the Curvenote CLI image ships them.
 It is only a risk when building locally.
@@ -394,9 +342,8 @@ It is only a risk when building locally.
 ### Pagination is computed from final content
 
 `make_pdfs.sh` rewrites `first_page` / `last_page` in every `myst.yml`, so run it **after** the last
-content change, not before. In Volume 3 a single blank line — the one that stopped a table caption
-being parsed as an extra table row — made that article a page shorter and shifted everything after
-it. Page numbers generated before a content edit are stale, and nothing warns you.
+content change, not before. Even a one-line edit can make an article a page shorter and shift every
+article after it. Page numbers generated before a content edit are stale, and nothing warns you.
 
 The script does warn about one thing: if the frontmatter changes length once real page numbers are
 filled in, it says so and asks you to run it again.
@@ -407,8 +354,7 @@ filled in, it says so and asks you to run it again.
 PDF* comes from the `frontmatter/` project, whose `myst.yml` points at `../morganton2027.pdf`. No
 workflow submits `frontmatter/` — all four glob only `papers/*` and `essays/*` — and
 `morganton2027.pdf` is gitignored, so CI couldn't upload it anyway. Any change made after the volume
-is published (Volume 3's SN figure fix, for one) leaves the site's full PDF stale until someone
-does this by hand.
+is published leaves the site's full PDF stale until someone does this by hand.
 
 These steps update a volume entry that already exists. Volume 3's was created outside these
 workflows, most likely by Curvenote during the DOI setup — see [Reference](reference.md). If Volume
@@ -442,9 +388,8 @@ workflows, most likely by Curvenote during the DOI setup — see [Reference](ref
 
    - *Update your submission … based on the contents of your local folder?* Answer yes.
    - *Build and submission checks completed, are you happy to proceed?* Answer yes. Only **4 of 16
-     checks pass**, and that's expected. The volume kind runs the article checks (abstract,
-     keywords, corresponding author, ORCID, CRediT), none of which the frontmatter has, and
-     Volume 3's earlier versions went in the same way.
+     checks pass**, and that's expected: the volume entry is checked like an article (abstract,
+     keywords, corresponding author, ORCID, CRediT), and the frontmatter has none of those.
 
    On success it prints `Your submission was successfully updated` and a build report URL. Run it
    in a real terminal: the prompts need someone to answer them, and with no input attached the
@@ -459,19 +404,16 @@ workflows, most likely by Curvenote during the DOI setup — see [Reference](ref
 
 Things to watch for:
 
-- **The venue is `ncssm-mor`, not `ncssm`.** The instructions this section is based on said
-  `curvenote submit ncssm`. The Curvenote API answers `Site not found` for `ncssm`, and every
-  workflow uses `ncssm-mor`.
+- **The venue is `ncssm-mor`, not `ncssm`.** `curvenote submit ncssm` fails with `Site not found`.
 - **If `submit` asks you for a collection or kind, stop.** That means it didn't find the existing
-  submission and is about to create a second Volume 4 entry. Volume 3's is in collection
+  submission and is about to create a second Volume 4 entry. Volume entries live in collection
   `volumes`, kind `volume`.
 - **`curvenote submission list` shows nothing, even with the service-account token.** That doesn't
   mean the volume entry is missing; check the [volumes page](https://morgantonscientific.ncssm.edu/volumes)
   instead.
-- **A `REVOKED` / `403` token error can be transient.** In October 2026 a working token reported
-  `REVOKED` once, while the SCMS dashboard still listed it as active, and `curvenote token check`
-  returned `VERIFIED` again a few minutes later. Recheck before you generate a new one.
-- **The publish date may default to today.** `curvenote submission publish --help` says the
-  publish date is today unless you pass `--date`, which on its own uses the frontmatter date
-  (`date:` in `frontmatter/volume.yml`). Untested: check after publishing that the volume still
-  shows that date, or publish from the dashboard.
+- **A `REVOKED` or `403` token error can be temporary.** Run `curvenote token check` again after a
+  few minutes before generating a new token.
+- **The publish date may default to today.** `curvenote submission publish --help` says the publish
+  date is today unless you pass `--date`, which on its own uses the `date:` in
+  `frontmatter/volume.yml`. After publishing, check that the volume shows the right date, or publish
+  from the dashboard instead.

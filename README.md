@@ -26,7 +26,7 @@ morganton2027.yml      shared config; every article extends it
 |---|---|
 | [Author's Guide](docs/author-guide.md) | Students — what to supply and why. No markup required |
 | [Copy Editor's Checklist](docs/copy-editor-checklist.md) | Content review and house style |
-| [Layout Editor's Guide](docs/layout-editor-guide.md) | MyST conversion, and 24 real mistakes from Volume 3 |
+| [Layout Editor's Guide](docs/layout-editor-guide.md) | MyST conversion, and the most common mistakes |
 | [Volume 4 workflow](docs/volume-4-workflow.md) | How the whole thing runs this year |
 | [Reference](docs/reference.md) | Identifiers, issue DOIs, editors, and non-obvious behaviour |
 
@@ -59,8 +59,8 @@ cd scripts && bash ./make_pdfs.sh
 ```
 
 The Noto fonts are required. Without them typst substitutes silently and the page numbers come out
-wrong with no error — Volume 3 first built as 143 pages instead of 160. The issue DOI must also be
-set in `frontmatter/volume.yml`; the cover template requires it.
+wrong with no error. The issue DOI must also be set in `frontmatter/volume.yml`; the cover template
+requires it.
 
 ## Previous volumes
 

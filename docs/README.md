@@ -1,13 +1,13 @@
 # Morganton Scientific — Editorial Guides
 
-Three role guides, plus the plan for how this volume runs. The guides were Written after preparing Volume 3, and
+Three role guides, plus the plan for how this volume runs. The guides were written after preparing Volume 3, and
 grounded in what actually needed fixing that year rather than general advice.
 
 | Guide | For | Covers |
 |---|---|---|
 | [Author's Guide](author-guide.md) | Student authors | What to supply and why: ORCID, CRediT roles, abbreviations, corresponding author, figures vs tables vs charts, citations, abstract, and a pre-submission checklist |
 | [Copy Editor's Checklist](copy-editor-checklist.md) | Content review | Completeness checks, figure and table handling, author metadata, and the house style guide |
-| [Layout Editor's Guide](layout-editor-guide.md) | MyST conversion | `myst.yml` and `article.md` structure, cross-references, citations, verification, the print PDF and updating it on the site, and the Volume 3 mistake table |
+| [Layout Editor's Guide](layout-editor-guide.md) | MyST conversion | `myst.yml` and `article.md` structure, cross-references, citations, verification, the print PDF and updating it on the site, and a table of common mistakes |
 | [Volume 4 workflow](volume-4-workflow.md) | Everyone | How this volume gets made, intake through publication |
 | [Reference](reference.md) | Everyone | Identifiers, DOIs, editors, and the things that are not obvious from the code |
 
@@ -42,5 +42,5 @@ These are markdown so they can be version-controlled alongside the volume and di
 If they move to a Google Doc or the journal website, keep these as the source of truth and export
 from here — otherwise they drift.
 
-After each volume, revisit the mistake table in the layout editor guide. Anything that recurs is a
+After each volume, revisit the common-mistakes table in the layout editor guide. Anything that recurs is a
 candidate for the author guide, since preventing it upstream is always cheaper.

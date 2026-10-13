@@ -63,13 +63,13 @@ applied automatically, so a typed number ends up duplicated as "Figure 1: Figure
 
 ## Part 3 — Author metadata
 
-- [ ] **ORCID for every author**, in full form: `0009-0006-7158-659X`
+- [ ] **ORCID for every author**, in full form: `0000-0002-1825-0097`
 - [ ] **CRediT roles for every author** — see the author guide for the fourteen terms
 - [ ] **One corresponding author** named, with a durable email address
-- [ ] **Names are consistent** between the manuscript, the email, and the ORCID record. "Alvin Qu"
-      and "Alvin L. Qu" must be resolved to one form before conversion.
-- [ ] **Affiliations correct.** Don't assume a co-author is from NCSSM — ask. Volume 3 had three
-      co-authors from three other high schools.
+- [ ] **Names are consistent** between the manuscript, the email, and the ORCID record. "Jordan Smith"
+      and "Jordan M. Smith" must be resolved to one form before conversion.
+- [ ] **Affiliations correct.** Don't assume a co-author is from NCSSM — ask. Co-authors sometimes
+      come from other schools.
 - [ ] **Five keywords or fewer**, and none duplicating another article in the same volume
 
 ---
@@ -128,9 +128,9 @@ Things only a careful reader catches:
 - [ ] **Statistics in the text match the figures and tables.** Check a sample of p-values against
       their source.
 - [ ] **Claims are proportionate.** A pilot study with n = 12 shouldn't read as established fact.
-- [ ] **Numbers are plausible.** A Volume 3 abstract stated that Parkinson's disease "affects 60% of
-      the United States population" — the real figure is around 1%. That one survived every stage of
-      review because it reads fluently.
+- [ ] **Numbers are plausible.** A prevalence of 60% for a disease that affects about 1% of people
+      can survive every stage of review if the sentence reads fluently. Check the big numbers
+      against their source.
 - [ ] **The abstract matches the paper.** Findings described in the abstract actually appear in the
       results.
 - [ ] **Acknowledgements are present** where people contributed without being authors.
