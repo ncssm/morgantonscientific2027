@@ -27,7 +27,7 @@ body:
       label: Folder name
       description: >-
         The lead author's last name, lowercase, with no spaces or "&". Use a hyphen for
-        co-authors, e.g. smith-jones. The article will live in papers/<this name>/.
+        co-authors. The article will live in a folder of that name, e.g. papers/smith-jones/.
       placeholder: smith
     validations:
       required: true
