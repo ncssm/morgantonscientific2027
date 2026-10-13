@@ -76,6 +76,27 @@ repository is the opposite one.
 Nothing fires on the date in `frontmatter/volume.yml`. It is what appears in the Crossref record and
 on the articles; publication happens when someone runs `publish_dispatch.yml`.
 
+### The board's stage moves run on a personal token
+
+The [Volume 4 articles board](https://github.com/orgs/ncssm/projects/1) puts new article issues in
+Intake and closed ones in Submitted by itself. The moves in between come from `board.yml`, which runs
+whenever an article issue is edited and sets the card's column from the stages checked off on it.
+
+The token every workflow gets can't change a board that belongs to an organization, so `board.yml`
+uses a repository secret, `BOARD_TOKEN`, holding a personal access token. To set it up or replace it:
+
+1. On github.com, open your profile menu → **Settings → Developer settings → Personal access tokens →
+   Tokens (classic) → Generate new token (classic)**.
+2. Name it "Morganton board moves", set it to expire at the end of the volume, and check only the
+   **project** scope.
+3. Copy the token. If GitHub offers **Configure SSO** for `ncssm`, authorize it there.
+4. In this repository: **Settings → Secrets and variables → Actions → New repository secret**, named
+   `BOARD_TOKEN`.
+
+Moves made this way show on the board as made by the token's owner. When the token expires, cards
+stop moving, and each run of **Board stage moves** says why; nothing else breaks. It only acts on
+issues opened by the repository's members or collaborators.
+
 ---
 
 ## Open questions for Curvenote
