@@ -331,31 +331,57 @@ one exists.
 
 ## 7. Verification
 
-Build before you hand off:
+You don't need to build anything yourself. Every push to an article's PR builds it and runs the
+checks; your job is to read the results and look at the Curvenote preview.
+
+### What the checks catch
+
+Open the PR's **Checks** tab, or read the bot's comment on the PR. These are checked on every push:
+
+| Problem | Checked by |
+|---|---|
+| Build warnings, broken image paths, duplicate identifiers | Manuscript check |
+| Hard-coded "Figure N" or "Table N" in the prose | Manuscript check |
+| Figure or table never mentioned in the text | Manuscript check |
+| Title differs between `myst.yml` and `article.md` | Manuscript check |
+| `affiliation: NCSSM` in uppercase | Manuscript check |
+| Hand-numbered headings | Manuscript check |
+| Cited key missing from the `.bib` | Manuscript check |
+| `id` in the wrong form | Curvenote preview |
+| Missing abstract, keywords, ORCID, CRediT roles or corresponding author | Curvenote preview |
+
+> **The manuscript check (`lint.yml`) is not in this repository yet.** Until it is, only the
+> Curvenote rows run automatically. Check the others by hand, and build locally (below) to see
+> warnings without digging through the CI log.
+
+### What only you can check
+
+In the Curvenote preview, the link the bot posts on the PR:
+
+- [ ] **Cross-references point at the right figure** and the sentence still makes sense
+- [ ] **Figures are the right images**, in the right order, and legible
+- [ ] **Tables read correctly**, especially any you transcribed from an image
+- [ ] **No citations went missing** if you converted citation syntax — compare the reference list
+      against the original manuscript
+- [ ] **Links open the right page in a browser** — some sites load but display "page not found",
+      which an automated link check passes
+
+Reading the source tells you what you wrote; only the preview tells you what a reader sees.
+Renderer-supplied punctuation — the brackets around a citation group, the space in "Figure 1" —
+doesn't exist in the source at all.
+
+### Building locally (optional)
+
+Waiting for CI after every small change is slow. If you have [Node.js](https://nodejs.org)
+installed, you can build on your own computer instead, from the article's folder:
 
 ```bash
 npx mystmd@latest build --site
 ```
 
-Then check:
-
-- [ ] **Zero warnings**, other than known and documented ones
-- [ ] **Every image path resolves** — compare figure directives against `images/`
-- [ ] **No hard-coded "Figure N"** left in the prose
-- [ ] **No duplicate identifiers**
-- [ ] **Citation count unchanged** if you converted citation syntax
-- [ ] **Titles match** between `myst.yml` and `article.md`
-- [ ] **`id` has the right form** — `morganton-2027-`, then 15 characters or fewer
-- [ ] **Affiliation resolves** to the full NCSSM record with ROR ID, not a bare `NCSSM`
-- [ ] **Rendered cross-references read correctly** — inspect the built output, not the source
-- [ ] **No hand-numbered headings** — `### 3.1 Baseline Model Performance` gets numbered a second
-      time in the typeset PDF
-- [ ] **Links checked in a browser** — some sites load successfully but display "page not found",
-      so an automated link check can pass a dead link
-
-Reading the source tells you what you wrote; only the build tells you what a reader sees.
-Renderer-supplied punctuation — the brackets around a citation group, the space in "Figure 1" —
-doesn't exist in the source at all.
+Warnings print in the terminal. `npx mystmd@latest start` serves a live preview in your browser
+that updates as you edit. Either way, the PR's checks are still the record of whether an article
+passes.
 
 ### Never push straight to `main`
 
