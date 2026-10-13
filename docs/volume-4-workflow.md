@@ -87,9 +87,6 @@ A layout editor converts the manuscript to MyST following the existing
 [layout editor guide](layout-editor-guide.md), and opens a PR: **one article, one folder, one PR**,
 `draft`-labelled.
 
-Per-article PRs also keep each push to a single submission group, which is simply good hygiene now
-that the multi-group summary bug is fixed (see §5).
-
 **Gate:** CI green — Curvenote's metadata checks *and* the manuscript checks in §4.
 
 ### Stage 2 — Author proof
@@ -121,15 +118,14 @@ rather than arriving in one batch.
 Once all articles are in: front matter, cover art and credit, running order, the issue DOI, the print
 PDF. This is the only genuinely end-loaded work, and it is small when the articles are already done.
 
-Two orderings that cost Volume 3 a rebuild each:
+Two things that force a rebuild if they're done in the wrong order:
 
 - **Pagination is computed from final content.** `scripts/make_pdfs.sh` writes `first_page` /
-  `last_page` into every `myst.yml`, so run it *after* the last content change. One blank line — the
-  one that stopped a table caption being parsed as an extra table row — moved an article a page and
-  shifted everything after it.
+  `last_page` into every `myst.yml`, so run it *after* the last content change. Even a one-line edit
+  can move an article by a page and shift everything after it.
 - **Install the Noto fonts before building.** The template sets `Noto Sans` and `Noto Serif`; without
-  them typst substitutes silently, with no error, and the page numbers come out wrong. Volume 3 first
-  built as 143 pages instead of 160 and looked entirely normal.
+  them typst substitutes silently, with no error, and the page numbers come out wrong while the PDF
+  looks entirely normal.
 
 ### Stage 6 — Publish
 
@@ -146,7 +142,7 @@ This is the irreversible step: the DOIs go live. Two things to know beforehand �
 ### Stage 7 — The website
 
 **Publishing a volume does not put it on the website.** That is a separate repository and a separate
-step, and it was the single biggest gap in this plan's first draft.
+step, and it is easy to forget.
 
 [`ncssm/morsci-website`](https://github.com/ncssm/morsci-website) holds the landing pages at
 <https://morgantonscientific.ncssm.edu>. Its README documents the procedure; in outline it is four
@@ -187,11 +183,11 @@ Each rule below maps to a real Volume 3 failure.
 | No `site:` key, no article-level `date:` | 14 and 3 articles |
 | `id` matches the pattern and the suffix is ≤ 15 characters | 1 article |
 | `affiliation` is lowercase `ncssm` | 8 articles |
-| Every cited key exists in the `.bib` | rivera |
+| Every cited key exists in the `.bib` | 1 article |
 | No hand-numbered headings (`### 3.1 Results`) | 29 headings, 2 articles |
-| No bare bib key in parentheses — `(smith2020)` instead of `[@smith2020]` | 3, patel2 |
-| No typed citation — `(Mishra, 2020)` as plain text | 5, quach |
-| No duplicate bibliography entries (same DOI or PMID twice) | browning |
+| No bare bib key in parentheses — `(smith2020)` instead of `[@smith2020]` | 3, in 1 article |
+| No typed citation — `(Smith, 2020)` as plain text | 5, in 1 article |
+| No duplicate bibliography entries (same DOI or PMID twice) | 1 article |
 
 **Warning (report, don't block):**
 
@@ -201,12 +197,12 @@ Each rule below maps to a real Volume 3 failure.
 | Abbreviations defined but never used | 13 |
 | Figure filename contains "table" — possible screenshotted table | 3 |
 | Abstract outside 180–250 words | several |
-| Frontmatter headings match the TOC entries in `generate_summary.sh` | drifted for 2 volumes |
-| Every DOI and URL resolves **in a browser**, not just to HTTP 200 | 3 dead links |
+| Frontmatter headings match the TOC entries in `generate_summary.sh` | out of step in 2 volumes |
+| Every DOI and URL resolves **in a browser**, not just to an automated request | 3 dead links |
 
 Roughly 150 lines of Python over the built MyST AST — which is where to read it, since the AST has
-resolved cross-references and citations. Reading `article.md` with regexes would re-learn the lesson
-from Volume 3 that source text and rendered output are different things.
+resolved cross-references and citations. Reading `article.md` with regexes would miss the ways the
+source text and the rendered output differ.
 
 Add it as `scripts/check_article.py`, called from a new `lint.yml` on every PR. It needs no Curvenote
 token, so it runs on forks and is fast.
@@ -226,11 +222,11 @@ Documenting a rule does not enforce it; this one is three lines of regex.
 
 **Already done in this repository** — recorded so nobody re-derives it.
 
-The workflows call `curvenote/actions@v1`, which resolves to `v1.0.21` or later. That release fixed
-[curvenote/actions#57](https://github.com/curvenote/actions/issues/57), where calling the reusable
-workflow more than once in a run made each call's `summary` job crash on the other's artifacts.
-Volume 3 shipped papers and essays as two separate pushes to work around it. **That is no longer
-necessary** — both groups can land in the same push.
+The workflows call `curvenote/actions@v1`, which resolves to `v1.0.21` or later, so papers and essays
+can be submitted in the same push. Earlier versions crashed when both ran in one push
+([curvenote/actions#57](https://github.com/curvenote/actions/issues/57)); if a `summary` job ever
+fails with `Cannot read properties of undefined`, check that the action version hasn't slipped
+backwards.
 
 Each job also sets a distinct `comment-title`. Without it the papers and essays previews overwrite
 each other's PR comment and you can only ever see one.
@@ -254,8 +250,8 @@ Four workflows, and it is worth knowing which does what:
 **Already in this repository:**
 
 - **`papers/_template/`** — copy it to `papers/<lastname>/` and fill in the `CHANGEME`s. Every field
-  carries a comment explaining the trap it exists to avoid. Copying last year's article instead is
-  how two Volume 3 titles ended up with a neighbouring article's words appended.
+  carries a comment explaining the trap it exists to avoid. Copying another article
+  instead tends to carry its title words and metadata into yours.
 - **`docs/`** — the three role guides, carried over, with Volume 3's mistake table intact.
 - **The workflows**, configured as in §5.
 

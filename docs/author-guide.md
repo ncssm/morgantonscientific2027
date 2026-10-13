@@ -22,7 +22,7 @@ schools, jobs and name changes. It is free and takes about two minutes:
 Register **before** you submit. It becomes part of the permanent DOI record for your article, and
 adding it afterwards is far more work than adding it now.
 
-Give it in full: `0009-0006-7158-659X`. If you have co-authors, every one of them needs their own.
+Give it in full: `0000-0002-1825-0097`. If you have co-authors, every one of them needs their own.
 
 > **Co-authors from outside NCSSM?** Tell us early. If an ORCID genuinely can't be obtained, the
 > usual outcome is that the contributor is thanked in the Acknowledgements rather than listed as an
@@ -53,7 +53,7 @@ often uses more.
 Write it plainly, e.g.:
 
 > **Author contributions.** J. Smith: Conceptualization, Investigation, Formal analysis,
-> Writing – original draft. A. Patel: Methodology, Validation, Writing – review & editing.
+> Writing – original draft. A. Okafor: Methodology, Validation, Writing – review & editing.
 
 This is a **required field** for publication. It's also the single item most often missing —
 in Volume 3, not one of the fifteen submissions arrived with it, and it became the last thing
@@ -177,8 +177,7 @@ bibliographies are where most citation problems begin.
    reference list — it silently vanishes. If it's there because you read it and it shaped your
    thinking, cite it. If not, delete it.
 
-Volume 3 had **60 uncited entries across 10 papers**, and one citation whose source we were never
-able to identify with confidence.
+Volume 3 had **60 uncited entries across 10 papers**.
 
 ### Include DOIs
 
@@ -216,11 +215,12 @@ Don't cite in the abstract, and don't use abbreviations you haven't spelled out 
 ## 5. Title, names and small things that are hard to fix later
 
 - **Proofread your title.** It's the most visible text you'll write, it goes into the permanent DOI
-  record, and it's the most expensive thing to correct after publication. One Volume 3 title
-  reached final review reading "Pronation" where it meant "Protonation".
+  record, and it's the most expensive thing to correct after publication. A one-letter typo in a
+  technical term is easy to read straight past.
 - **No full stop at the end of a title.**
 - **Use one form of your name**, consistently, everywhere — in the document, in your email, on your
-  ORCID. "A. L. Qu", "Alvin Qu" and "Alvin L. Qu" are three different people to an indexing system.
+  ORCID. "J. M. Smith", "Jordan Smith" and "Jordan M. Smith" are three different people to an indexing
+  system.
 - **Species names** are italicised, with a lowercase species epithet: *Drosophila melanogaster*,
   *Caenorhabditis elegans*, *Danio rerio*. Capital genus, lowercase species — always.
 - **American spelling** throughout: modeled, behavior, analyze, aging, characterized.

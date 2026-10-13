@@ -8,8 +8,8 @@ abstract: |
 
 <!-- Headings start at ##. The title comes from frontmatter above; an "#"
      heading would duplicate it. Do not number headings by hand — numbering is
-     applied automatically, and two Volume 3 articles carried 29 hand-numbered
-     headings that were then numbered a second time in the PDF.
+     applied automatically, so hand-numbered headings get numbered twice in the
+     PDF.
 
      Do not add a `date:` — the volume publication date is inherited.
      Do not end the file with "---" — it renders as a stray horizontal rule. -->
@@ -32,7 +32,7 @@ shown, the conditions, what error bars represent, and how many replicates.
 ```
 
 Reference every figure and table in the prose — `@Figure_1` renders "Figure 1"
-and renumbers itself. In Volume 3, 36 of 84 figures were never mentioned at all.
+and renumbers itself.
 
 ```{table} The caption for a table goes on the fence line, unlike a figure.
 :name: Table_1
