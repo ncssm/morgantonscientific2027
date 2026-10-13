@@ -8,7 +8,8 @@ Each article gets two passes from its copy editor:
    approval on the article's pull request, which is what allows it to merge.
 
 **When a manuscript arrives**, open a *New article* issue for it (Issues → New issue → New article)
-and assign yourself. The issue is where you record what has been received and what you're waiting
+and assign yourself. Title the issue with the folder name the article will have: the lead author's
+last name in lowercase, with a hyphen between co-authors, e.g. **Article: smith-jones**. The issue is where you record what has been received and what you're waiting
 on from the author.
 
 Anything you can't resolve, raise with the author immediately rather than passing it downstream.
