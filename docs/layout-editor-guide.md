@@ -68,7 +68,7 @@ project:
 | Field | Notes |
 |---|---|
 | `extends` | **Always.** Without it the article inherits nothing — no venue, affiliations, licence, funding statement or PDF template. |
-| `id` | Must match `^morganton-2026-[a-zA-Z0-9_-]{2,15}$`. The **suffix is capped at 15 characters** — `chenchu-bordoloi` is 16 and fails, so its id is `morganton-2027-chenchu`. The id doesn't have to match the folder name. |
+| `id` | Must match `^morganton-2027-[a-zA-Z0-9_-]{2,15}$`. The **suffix is capped at 15 characters** — `chenchu-bordoloi` is 16 and fails, so its id is `morganton-2027-chenchu`. The id doesn't have to match the folder name. |
 | `title` | Must be **identical** to the `title:` in `article.md`. Watch for stray words: two Volume 3 titles had " Platforms" appended from a neighbouring article. |
 | `description` | 2–4 sentences, ~40–60 words. **Plain ASCII** — no markdown emphasis, spell out Greek letters and symbols. It's reused where markup won't render, so `*Drosophila*` would display its asterisks. |
 | `keywords` | **Maximum 5.** Also checked for uniqueness across the collection, so coordinate across the volume — two articles sharing a keyword will trip it. |
@@ -365,10 +365,11 @@ The typst export is exercised by **nothing** in the web build. Three Volume 3 pr
 review because of that: page footers still reading the previous volume, a cover DOI that couldn't
 resolve, and a template calling a typst function that had been removed.
 
-**Build the print PDF early**, not at the end:
+**Build the print PDF early**, not at the end. Run it from inside `scripts/` — every path in the
+script is relative to that folder, so `bash scripts/make_pdfs.sh` from the repo root fails:
 
 ```bash
-bash scripts/make_pdfs.sh
+cd scripts && bash ./make_pdfs.sh
 ```
 
 It needs the issue DOI minted — the preface template declares `issue` as required and prints the DOI
@@ -399,3 +400,78 @@ it. Page numbers generated before a content edit are stale, and nothing warns yo
 
 The script does warn about one thing: if the frontmatter changes length once real page numbers are
 filled in, it says so and asks you to run it again.
+
+### Updating the full PDF on the website
+
+**Republishing the articles does not update the full volume PDF.** The volume page's *Download Full
+PDF* comes from the `frontmatter/` project, whose `myst.yml` points at `../morganton2027.pdf`. No
+workflow submits `frontmatter/` — all four glob only `papers/*` and `essays/*` — and
+`morganton2027.pdf` is gitignored, so CI couldn't upload it anyway. Any change made after the volume
+is published (Volume 3's SN figure fix, for one) leaves the site's full PDF stale until someone
+does this by hand.
+
+These steps update a volume entry that already exists. Volume 3's was created outside these
+workflows, most likely by Curvenote during the DOI setup — see [Reference](reference.md). If Volume
+4's doesn't exist yet, ask Curvenote rather than creating it here.
+
+1. **Install the Curvenote CLI** — `npm install -g curvenote`.
+2. **Sign in as the service account.** Generate a new token for the *Morganton Scientific Service
+   Account* in the SCMS dashboard, then:
+
+   ```bash
+   curvenote token set <new-token>
+   curvenote token check
+   ```
+
+   `check` should report the service account as `VERIFIED`.
+3. **Rebuild the PDF** if anything has changed since the last build. It writes
+   `morganton2027.pdf` at the repo root, which is where `frontmatter/myst.yml` looks for it.
+
+   ```bash
+   cd scripts && bash ./make_pdfs.sh
+   ```
+
+4. **Submit a new version of the frontmatter:**
+
+   ```bash
+   cd frontmatter && curvenote submit ncssm-mor
+   ```
+
+   It finds the existing volume submission by `project.id` (`morganton-2027-vol-4`) and asks two
+   questions:
+
+   - *Update your submission … based on the contents of your local folder?* Answer yes.
+   - *Build and submission checks completed, are you happy to proceed?* Answer yes. Only **4 of 16
+     checks pass**, and that's expected. The volume kind runs the article checks (abstract,
+     keywords, corresponding author, ORCID, CRediT), none of which the frontmatter has, and
+     Volume 3's earlier versions went in the same way.
+
+   On success it prints `Your submission was successfully updated` and a build report URL. Run it
+   in a real terminal: the prompts need someone to answer them, and with no input attached the
+   CLI either crashes or sits waiting with no visible output.
+5. **Publish it** — press the button in the SCMS dashboard, or run
+   `curvenote submission publish ncssm-mor` from `frontmatter/`.
+6. **Replace the copy on the GitHub release** so the archive matches the site:
+
+   ```bash
+   gh release upload v4.0 morganton2027.pdf --clobber
+   ```
+
+Things to watch for:
+
+- **The venue is `ncssm-mor`, not `ncssm`.** The instructions this section is based on said
+  `curvenote submit ncssm`. The Curvenote API answers `Site not found` for `ncssm`, and every
+  workflow uses `ncssm-mor`.
+- **If `submit` asks you for a collection or kind, stop.** That means it didn't find the existing
+  submission and is about to create a second Volume 4 entry. Volume 3's is in collection
+  `volumes`, kind `volume`.
+- **`curvenote submission list` shows nothing, even with the service-account token.** That doesn't
+  mean the volume entry is missing; check the [volumes page](https://morgantonscientific.ncssm.edu/volumes)
+  instead.
+- **A `REVOKED` / `403` token error can be transient.** In October 2026 a working token reported
+  `REVOKED` once, while the SCMS dashboard still listed it as active, and `curvenote token check`
+  returned `VERIFIED` again a few minutes later. Recheck before you generate a new one.
+- **The publish date may default to today.** `curvenote submission publish --help` says the
+  publish date is today unless you pass `--date`, which on its own uses the frontmatter date
+  (`date:` in `frontmatter/volume.yml`). Untested: check after publishing that the volume still
+  shows that date, or publish from the dashboard.
