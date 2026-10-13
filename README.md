@@ -15,18 +15,18 @@ or a requested change sends the article back to the layout editor, on the same p
 ```mermaid
 flowchart TD
     subgraph before["Before GitHub"]
-        submit["<b>Submission</b><br/>The student author fills in the intake Google Form.<br/>Answers land in a Sheet, uploads in Drive."]
-        folder["<b>Manuscript folder</b><br/>An editor gathers the manuscript, figures, .bib file<br/>and any code into one Drive folder for the article."]
+        submit["<b>Submission</b><br/>student author"]
+        folder["<b>Manuscript folder</b><br/>an editor"]
     end
-    subgraph github["On GitHub: the article's issue and pull request"]
-        intake["<b>Intake</b><br/>The copy editor opens a New article issue with the folder link,<br/>chases the author for anything missing, then assigns the layout editor."]
-        convert["<b>Conversion</b><br/>The layout editor converts the manuscript and opens a pull request<br/>with the draft label. Its description links back to the issue."]
-        checks["<b>Checks</b><br/>The manuscript check and Curvenote's checks run on every push,<br/>and post their results and the preview link on the pull request."]
-        proof["<b>Author proof</b><br/>The author reads the Curvenote preview and replies by email.<br/>An editor ticks Author proof on the issue."]
-        copyedit["<b>Copy edit</b><br/>The copy editor reads the preview against the checklist, Part 5,<br/>and approves the pull request."]
-        merge["<b>Merge</b><br/>The Editor-in-Chief merges. submit.yml sends the article<br/>to Curvenote, and the issue closes."]
+    subgraph github["On GitHub"]
+        intake["<b>Intake</b><br/>copy editor"]
+        convert["<b>Conversion</b><br/>layout editor"]
+        checks["<b>Checks</b><br/>automatic"]
+        proof["<b>Author proof</b><br/>author, by email"]
+        copyedit["<b>Copy edit</b><br/>copy editor"]
+        merge["<b>Merge</b><br/>submits to Curvenote"]
     end
-    volume["<b>Volume assembly and publication</b><br/>Front matter, cover, issue DOI and print PDF,<br/>then publish_dispatch.yml and the website."]
+    volume["<b>Volume assembly and publication</b><br/>Editors-in-Chief"]
 
     submit --> folder --> intake --> convert --> checks --> proof --> copyedit --> merge
     merge -- "once every article is in" --> volume
@@ -39,6 +39,18 @@ flowchart TD
     class submit,folder offGitHub
     class merge submits
 ```
+
+| Step | Who | Where | What happens |
+|---|---|---|---|
+| Submission | Student author | The intake Google Form | Answers land in a Sheet, uploads in Drive |
+| Manuscript folder | An editor | Google Drive | The manuscript, figures, `.bib` file and any code go into one folder for the article |
+| Intake | Copy editor | A *New article* issue | Opened with the folder link; the copy editor chases anything missing, then assigns the layout editor |
+| Conversion | Layout editor | A pull request with the `draft` label | Its description links back to the issue |
+| Checks | Automatic | The pull request | The manuscript check and Curvenote's checks run on every push and post their results and the preview link |
+| Author proof | Author, via an editor | Email, then the issue | The author reads the Curvenote preview; an editor ticks *Author proof* |
+| Copy edit | Copy editor | A review on the pull request | Read against the [checklist](docs/copy-editor-checklist.md), Part 5, then approved |
+| Merge | Editor-in-Chief | The pull request | `submit.yml` sends the article to Curvenote, and the issue closes |
+| Volume assembly | Editors-in-Chief | This repository | Front matter, cover, issue DOI and print PDF, then `publish_dispatch.yml` and the website |
 
 The [Volume 4 workflow](docs/volume-4-workflow.md) explains each step, and the role guides below
 say how to do them.
