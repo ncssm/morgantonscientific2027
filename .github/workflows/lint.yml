@@ -1,0 +1,49 @@
+name: Manuscript check
+# Runs scripts/check_article.py on the articles a pull request changes, and posts the results
+# as a comment on the PR. Unlike draft.yml it needs no Curvenote token, so it runs on every PR,
+# including ones that change no articles; those pass straight away.
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+  pull-requests: write
+concurrency:
+  group: manuscript-check-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+jobs:
+  check:
+    name: Manuscript check
+    runs-on: ubuntu-latest
+    env:
+      MYST_CMD: npx --yes mystmd@1.10.1
+      REPORT: manuscript-check.md
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Install PyYAML
+        run: |
+          python3 -m venv "$RUNNER_TEMP/venv"
+          "$RUNNER_TEMP/venv/bin/pip" install --quiet pyyaml==6.0.2
+          echo "$RUNNER_TEMP/venv/bin" >> "$GITHUB_PATH"
+      - name: Test the check itself
+        run: python -m unittest discover scripts/tests
+      - name: Check the changed articles
+        run: python scripts/check_article.py --changed-since "origin/${{ github.base_ref }}" --report "$REPORT"
+      - name: Post the results on the pull request
+        # A fork's PR gets a read-only token, so this step may fail there; the check above still counts.
+        if: always()
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          [ -f "$REPORT" ] || exit 0
+          id=$(gh api "repos/$GITHUB_REPOSITORY/issues/$PR/comments" --paginate \
+                 --jq '.[] | select(.body | startswith("<!-- manuscript-check -->")) | .id' | tail -n 1)
+          if [ -n "$id" ]; then
+            gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$id" -F "body=@$REPORT" > /dev/null
+          elif ! grep -q "No articles changed" "$REPORT"; then
+            gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body-file "$REPORT"
+          fi

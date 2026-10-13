@@ -1,0 +1,27 @@
+version: 1
+extends:
+  - ../../morgantonYEAR.yml
+project:
+  id: morganton-YEAR-good
+  thumbnail: images/fig1.png
+  title: >-
+    Effects of Dietary Caffeine on Climbing Behavior in Drosophila
+  description: >-
+    Flies reared on caffeine climbed more slowly than controls. The effect grew with dose and
+    was clearest at the highest concentration tested.
+  keywords:
+    - Caffeine
+    - Negative geotaxis
+    - Dose response
+  authors:
+    - name: Jordan Smith
+      email: smith27j@ncssm.edu
+      orcid: 0000-0002-1825-0097
+      affiliation: ncssm
+      corresponding: true
+      roles:
+        - Investigation
+        - Writing – original draft
+  subject: Biology
+  abbreviations:
+    ROS: Reactive Oxygen Species

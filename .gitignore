@@ -10,3 +10,6 @@ morganton2027.pdf
 
 # local working document, not part of the published volume
 REVIEW.md
+
+# Python bytecode from running scripts/check_article.py
+__pycache__/
