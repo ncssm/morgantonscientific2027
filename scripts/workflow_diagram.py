@@ -32,7 +32,7 @@ STAGES = [
      "Who: nobody · On GitHub: the Checks tab",
      ["Bot comment explains each problem", "Curvenote posts the preview link"]),
     ("6. Author proof", "Author reads the Curvenote preview and replies by email",
-     "Who: author, via an editor · On GitHub: a tick on the issue",
+     "Who: author, via an editor · On GitHub: a checkbox on the issue",
      ["needs-author label shows the wait", "on the board"]),
     ("7. Copy edit", "Copy editor's read-through of the preview (checklist Part 5)",
      "Who: copy editor · On GitHub: a requested PR review",

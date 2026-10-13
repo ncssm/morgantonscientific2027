@@ -24,7 +24,7 @@ These four checks account for most of what goes wrong.
 
 ### 1.1 Every figure and table is referred to in the text
 
-Read through and tick off each figure as you find its mention. A figure the text never refers to is
+Read through and check off each figure as you find its mention. A figure the text never refers to is
 either decoration or a gap in the argument, and only the author can say which.
 
 > In Volume 3, **36 of 84** figures and tables were never mentioned in the prose. Three papers
@@ -143,7 +143,7 @@ Before you hand an article over, confirm:
 If something is outstanding, say so explicitly in the handoff rather than leaving it to be
 discovered. A known gap is manageable; a surprise one late in production is not.
 
-Then, on the article's issue, tick what has been received, **remove yourself as assignee and assign
+Then, on the article's issue, check off what has been received, **remove yourself as assignee and assign
 the layout editor**. They get a notification and take it from there.
 
 ---
@@ -170,6 +170,6 @@ Things only a careful reader catches:
 
 When you're done, open the PR's **Files changed** tab and choose **Review changes**:
 
-- **Approve** if it's ready. Then tick *Copy edit* on the article's issue.
+- **Approve** if it's ready. Then check off *Copy edit* on the article's issue.
 - **Request changes** if not, listing what needs fixing. The layout editor fixes it and asks you
   again.

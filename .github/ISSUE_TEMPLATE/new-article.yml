@@ -119,7 +119,7 @@ body:
     attributes:
       label: Received
       description: >-
-        Tick what has arrived. Anything left unticked is something to chase now, while the author
+        Check off what has arrived. Anything left unchecked is something to chase now, while the author
         is still around. No article goes into the repository until the intake form is in.
       options:
         - label: Intake form completed by the corresponding author
@@ -134,7 +134,7 @@ body:
     attributes:
       label: Stages
       description: >-
-        Leave these unticked when you open the issue. Tick each one here as the article passes
+        Leave these unchecked when you open the issue. Check off each one here as the article passes
         it. When the PR is opened, write "Closes #" and this issue's number in its description,
         so merging the PR closes this issue.
       options:

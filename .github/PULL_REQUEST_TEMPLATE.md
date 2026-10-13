@@ -4,7 +4,7 @@ Closes #<!-- the article's issue number, so merging this PR closes it -->
 
 **Folder:** `papers/` or `essays/` —
 
-The article's progress is tracked on its issue: tick each stage there, not here.
+The article's progress is tracked on its issue: check off each stage there, not here.
 
 ## Notes for the reviewer
 
