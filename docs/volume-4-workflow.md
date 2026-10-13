@@ -61,6 +61,9 @@ should be detected automatically, before a human reads the article.
 
 ## 3. The pipeline
 
+The diagram in the [README](../README.md#how-an-article-gets-published) shows these stages at a glance,
+with who acts at each.
+
 ### Stage 0 — Intake (at submission, not at the end)
 
 The single highest-value change. **Author metadata is collected with the manuscript, not chased in

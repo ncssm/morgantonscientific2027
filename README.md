@@ -6,6 +6,43 @@ Published at <https://morgantonscientific.ncssm.edu>.
 **Start here:** [`docs/volume-4-workflow.md`](docs/volume-4-workflow.md) — how a volume gets made,
 from intake through publication, written at the end of Volume 3.
 
+## How an article gets published
+
+Two steps happen before an article reaches GitHub; the rest happen on the article's issue and
+pull request. Only the merge has consequences: it submits the article to Curvenote. A failed check
+or a requested change sends the article back to the layout editor, on the same pull request.
+
+```mermaid
+flowchart TD
+    subgraph before["Before GitHub"]
+        submit["<b>Submission</b><br/>The student author fills in the intake Google Form.<br/>Answers land in a Sheet, uploads in Drive."]
+        folder["<b>Manuscript folder</b><br/>An editor gathers the manuscript, figures, .bib file<br/>and any code into one Drive folder for the article."]
+    end
+    subgraph github["On GitHub: the article's issue and pull request"]
+        intake["<b>Intake</b><br/>The copy editor opens a New article issue with the folder link,<br/>chases the author for anything missing, then assigns the layout editor."]
+        convert["<b>Conversion</b><br/>The layout editor converts the manuscript and opens a pull request<br/>with the draft label. Its description links back to the issue."]
+        checks["<b>Checks</b><br/>The manuscript check and Curvenote's checks run on every push,<br/>and post their results and the preview link on the pull request."]
+        proof["<b>Author proof</b><br/>The author reads the Curvenote preview and replies by email.<br/>An editor ticks Author proof on the issue."]
+        copyedit["<b>Copy edit</b><br/>The copy editor reads the preview against the checklist, Part 5,<br/>and approves the pull request."]
+        merge["<b>Merge</b><br/>The Editor-in-Chief merges. submit.yml sends the article<br/>to Curvenote, and the issue closes."]
+    end
+    volume["<b>Volume assembly and publication</b><br/>Front matter, cover, issue DOI and print PDF,<br/>then publish_dispatch.yml and the website."]
+
+    submit --> folder --> intake --> convert --> checks --> proof --> copyedit --> merge
+    merge -- "once every article is in" --> volume
+    checks -. "a check fails" .-> convert
+    proof -. "changes needed" .-> convert
+    copyedit -. "changes requested" .-> convert
+
+    classDef offGitHub stroke-dasharray: 5 4
+    classDef submits stroke-width: 3px
+    class submit,folder offGitHub
+    class merge submits
+```
+
+The [Volume 4 workflow](docs/volume-4-workflow.md) explains each step, and the role guides below
+say how to do them.
+
 ## Layout
 
 ```
