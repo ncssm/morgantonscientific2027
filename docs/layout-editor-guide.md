@@ -68,7 +68,7 @@ project:
 | Field | Notes |
 |---|---|
 | `extends` | **Always.** Without it the article inherits nothing — no venue, affiliations, licence, funding statement or PDF template. |
-| `id` | Must match `^morganton-2027-[a-zA-Z0-9_-]{2,15}$`. The **suffix is capped at 15 characters** — `chenchu-bordoloi` is 16 and fails, so its id is `morganton-2027-chenchu`. The id doesn't have to match the folder name. |
+| `id` | `morganton-2027-` followed by 2 to 15 letters, digits, hyphens or underscores. The **15-character cap catches people out** — `chenchu-bordoloi` is 16 and fails, so its id is `morganton-2027-chenchu`. The id doesn't have to match the folder name. |
 | `title` | Must be **identical** to the `title:` in `article.md`. Watch for stray words: two Volume 3 titles had " Platforms" appended from a neighbouring article. |
 | `description` | 2–4 sentences, ~40–60 words. **Plain ASCII** — no markdown emphasis, spell out Greek letters and symbols. It's reused where markup won't render, so `*Drosophila*` would display its asterisks. |
 | `keywords` | **Maximum 5.** Also checked for uniqueness across the collection, so coordinate across the volume — two articles sharing a keyword will trip it. |
