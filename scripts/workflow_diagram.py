@@ -7,7 +7,7 @@ whichever matches the reader's GitHub theme. To change the diagram, edit STAGES 
     python3 scripts/workflow_diagram.py
 
 Each stage is (name, what happens, who and where, [what happens automatically]). Start an
-automatic line with "~" if it isn't set up yet; it's drawn in grey italics.
+automatic line with "~" if it isn't set up yet; it's drawn in gray italics.
 """
 
 from html import escape
@@ -45,7 +45,7 @@ STAGES = [
      ["~pdf.yml builds the print PDF", "~Readiness check gates publishing"]),
 ]
 OFF_GITHUB = {0, 1}          # drawn dashed
-SUBMITS = 7                  # drawn in the accent colour
+SUBMITS = 7                  # drawn in the accent color
 LOOP_FROM, LOOP_TO = (4, 5, 6), 3
 BETWEEN = {7: "once every article is in"}  # label on the arrow below a stage
 
@@ -76,7 +76,7 @@ def draw(t: dict) -> str:
            f'markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" '
            f'fill="{t["edge"]}"/></marker></defs>',
            text(24, 34, TITLE, t["ink"], 15, 600),
-           text(24, 54, "Dashed outline: before the article reaches GitHub · grey italics: "
+           text(24, 54, "Dashed outline: before the article reaches GitHub · gray italics: "
                 "not set up yet", t["quiet"]),
            text(SX, 82, "Stage, who acts, and where it happens", t["quiet"], weight=600),
            text(AX, 82, "Happens automatically", t["quiet"], weight=600)]

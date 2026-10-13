@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 960" width="760" height="960" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" role="img" aria-label="An article loops until it is right, and only the merge submits it">
 <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#b5b2aa"/></marker></defs>
 <text x="24" y="34" font-size="15" font-weight="600" fill="#1f1e1c" text-anchor="start">An article loops until it is right, and only the merge submits it</text>
-<text x="24" y="54" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start">Dashed outline: before the article reaches GitHub · grey italics: not set up yet</text>
+<text x="24" y="54" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start">Dashed outline: before the article reaches GitHub · gray italics: not set up yet</text>
 <text x="60" y="82" font-size="11.5" font-weight="600" fill="#6b6a66" text-anchor="start">Stage, who acts, and where it happens</text>
 <text x="502" y="82" font-size="11.5" font-weight="600" fill="#6b6a66" text-anchor="start">Happens automatically</text>
 <path d="M265 168V190" fill="none" stroke="#b5b2aa" stroke-width="1.25" marker-end="url(#arrow)"/>

@@ -97,7 +97,7 @@ answered by the issues assigned to you.
 
 The layout editor assigned on the issue converts the manuscript to MyST following the
 [layout editor guide](layout-editor-guide.md), and opens a PR: **one article, one folder, one PR**,
-`draft`-labelled, with `Closes #<issue>` in its description so that merging closes the issue. Once
+`draft`-labeled, with `Closes #<issue>` in its description so that merging closes the issue. Once
 the checks are green, they request the copy editor's review on the PR.
 
 **Gate:** CI green — Curvenote's metadata checks *and* the manuscript checks in §4.
@@ -253,7 +253,7 @@ Four workflows, and it is worth knowing which does what:
 
 | Workflow | Trigger | Effect |
 |---|---|---|
-| `draft.yml` | PR labelled `draft` | Preview + checks. Nothing is submitted |
+| `draft.yml` | PR labeled `draft` | Preview + checks. Nothing is submitted |
 | `submit.yml` | push to `main` | Submits **changed** articles as new versions |
 | `resubmit_dispatch.yml` | manual | Submits **all** articles. Use after a change to `frontmatter/` or shared config, which no article path glob matches |
 | `publish_dispatch.yml` | manual | Submits all, then **publishes**. The irreversible one |
@@ -325,7 +325,7 @@ defect — it was that everything arrived simultaneously with no slack behind it
 ## Open questions
 
 - **How many layout editors, and how comfortable with git?** The plan assumes at least one confident
-  with PRs. If not, conversion can be centralised and the rest of the workflow is unchanged.
+  with PRs. If not, conversion can be centralized and the rest of the workflow is unchanged.
 - **Can the intake form be made a condition of submission?** It works only as a gate, not a request.
 - **Do authors reliably respond after submitting?** Stage 2 depends on it. If they do not, the proof
   step moves earlier — before an article is considered received.
@@ -347,4 +347,4 @@ as a Drive folder in June and published on 1 September. The preparation work inc
 - CRediT roles collected from nobody, resolved only in the final week
 - A print PDF that had never been built, against a template calling a removed typst function
 
-Almost none of that needed judgement. It needed someone to notice — which is what §4 is for.
+Almost none of that needed judgment. It needed someone to notice — which is what §4 is for.

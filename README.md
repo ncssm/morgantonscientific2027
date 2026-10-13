@@ -44,7 +44,7 @@ morganton2027.yml      shared config; every article extends it
 | [Copy Editor's Checklist](docs/copy-editor-checklist.md) | Content review and house style |
 | [Layout Editor's Guide](docs/layout-editor-guide.md) | MyST conversion, and the most common mistakes |
 | [Volume 4 workflow](docs/volume-4-workflow.md) | How the whole thing runs this year |
-| [Reference](docs/reference.md) | Identifiers, issue DOIs, editors, and non-obvious behaviour |
+| [Reference](docs/reference.md) | Identifiers, issue DOIs, editors, and non-obvious behavior |
 
 ## Adding an article
 
@@ -61,7 +61,7 @@ merge when the checks pass. Merging submits it; nothing is published until
 | | Trigger | Effect |
 |---|---|---|
 | `lint.yml` | every PR | The manuscript check (`scripts/check_article.py`) on changed articles; results posted on the PR |
-| `draft.yml` | PR labelled `draft` | Preview and checks. Submits nothing |
+| `draft.yml` | PR labeled `draft` | Preview and checks. Submits nothing |
 | `submit.yml` | push to `main` | Submits changed articles as new versions |
 | `resubmit_dispatch.yml` | manual | Submits **all** articles — use after changing `frontmatter/` or shared config |
 | `publish_dispatch.yml` | manual | Submits all, then **publishes**. Irreversible |

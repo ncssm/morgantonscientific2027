@@ -66,7 +66,7 @@ project:
 
 | Field | Notes |
 |---|---|
-| `extends` | **Always.** Without it the article inherits nothing — no venue, affiliations, licence, funding statement or PDF template. |
+| `extends` | **Always.** Without it the article inherits nothing — no venue, affiliations, license, funding statement or PDF template. |
 | `id` | `morganton-2027-` followed by 2 to 15 letters, digits, hyphens or underscores. The **15-character cap catches people out** on co-authored papers — `garcia-robinson` fits, but `garcia-robinsons` is 16 and fails, so shorten it to something like `morganton-2027-garcia`. The id doesn't have to match the folder name. |
 | `title` | Must be **identical** to the `title:` in `article.md`. Watch for stray words pasted in from another article. |
 | `description` | 2–4 sentences, ~40–60 words. **Plain ASCII** — no markdown emphasis, spell out Greek letters and symbols. It's reused where markup won't render, so `*Drosophila*` would display its asterisks. |
@@ -75,7 +75,7 @@ project:
 | `authors` | Must be a **list** — every entry starts `- name:`. Without the dashes it silently fails to parse as an author list. |
 | `affiliation` | **Lowercase `ncssm`**, matching the id in `frontmatter/volume.yml`. `NCSSM` creates a *second, bare* affiliation and silently drops the address, phone and **ROR ID** — which feed the Crossref record. |
 | `orcid` | Full form. Verify the check digit; a transposed digit points at a real other person. |
-| `roles` | CRediT. MyST validates and normalises against the taxonomy, so `writing-review-editing` resolves to `Writing – review & editing`. |
+| `roles` | CRediT. MyST validates and normalizes against the taxonomy, so `writing-review-editing` resolves to `Writing – review & editing`. |
 | `thumbnail` | Path to a real figure. Use `../../templates/ncssm-preface/logo.png` if there's no suitable original image. |
 | `abbreviations` | A **mapping**, `KEY: expansion`. Not a list of dashes — that's a shape error that won't parse. |
 
@@ -287,7 +287,7 @@ entry that is never cited doesn't appear in it.
 
 A few rules:
 
-- **The citation goes before the full stop**: `…adult flies [@smith_caffeine_2020].`
+- **The citation goes before the period**: `…adult flies [@smith_caffeine_2020].`
 - **Group with semicolons inside one pair of brackets**, `[@a; @b]` — not `[@a][@b]`, which renders
   two parentheses side by side.
 - **The key must match the `.bib` exactly**, including capitals. A key with no matching entry gives a
@@ -426,7 +426,7 @@ If you're checking nothing else, check these.
 | `affiliation: NCSSM` (uppercase) | Drops address, phone, ROR ID |
 | `authors:` without dashes | Author list fails to parse |
 | `abbreviations:` written as a list | Shape error |
-| `Keywords:` capitalised | Field silently ignored |
+| `Keywords:` capitalized | Field silently ignored |
 | `site:` block in an article | Conflicts with the volume theme |
 | Article-level `date:` | Overrides the volume publication date |
 | Title differs between the two files | Inconsistent metadata |

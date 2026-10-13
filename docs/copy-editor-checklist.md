@@ -93,7 +93,7 @@ House style. Apply consistently; flag anything that looks deliberate before chan
 | Figure 1 | Fig. 1, Fig 1, fig.1, FIGURE 1 |
 | Table 2 | Tab. 2, table 2 |
 
-Spelled out, capitalised, every time — including mid-sentence. This is the house form across all
+Spelled out, capitalized, every time — including mid-sentence. This is the house form across all
 three volumes.
 
 ### Headings
@@ -105,9 +105,9 @@ three volumes.
 
 ### Titles
 
-- No full stop at the end
+- No period at the end
 - Proofread character by character — it goes into the permanent DOI record
-- Species names italicised, lowercase epithet
+- Species names italicized, lowercase epithet
 
 ### Spelling and terminology
 
