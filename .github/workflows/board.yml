@@ -1,0 +1,33 @@
+name: Board stage moves
+# Moves an article's card on the Volume 4 articles board when a stage is checked off on its
+# issue (checking a box edits the issue). scripts/board_status.py does the work.
+#
+# The built-in Actions token can't change an organization's board, so this uses BOARD_TOKEN:
+# a personal access token with the project scope. Until it's set, runs log a note and stop.
+# docs/reference.md says how to set it.
+on:
+  issues:
+    types: [edited]
+permissions:
+  contents: read
+concurrency:
+  # One run per issue at a time; a burst of clicks ends with the latest state.
+  group: board-${{ github.event.issue.number }}
+jobs:
+  move:
+    name: Move the card
+    if: contains(github.event.issue.labels.*.name, 'article')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Move the card to match the checked-off stages
+        env:
+          GH_TOKEN: ${{ secrets.BOARD_TOKEN }}
+          PROJECT_OWNER: ncssm
+          PROJECT_NUMBER: '1'
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::notice::BOARD_TOKEN isn't set, so cards aren't moved yet. See docs/reference.md."
+            exit 0
+          fi
+          python3 scripts/board_status.py

@@ -61,6 +61,7 @@ merge when the checks pass. Merging submits it; nothing is published until
 | | Trigger | Effect |
 |---|---|---|
 | `lint.yml` | every PR | The manuscript check (`scripts/check_article.py`) on changed articles; results posted on the PR |
+| `board.yml` | an article issue is edited | Moves its card on the board to match the stages checked off |
 | `draft.yml` | PR labeled `draft` | Preview and checks. Submits nothing |
 | `submit.yml` | push to `main` | Submits changed articles as new versions |
 | `resubmit_dispatch.yml` | manual | Submits **all** articles — use after changing `frontmatter/` or shared config |
