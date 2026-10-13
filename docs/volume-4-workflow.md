@@ -79,13 +79,23 @@ A short form, filled in once per article by the corresponding author:
 That's ten minutes for the author and eliminates four of Volume 3's blockers. A Google Form writing
 to a Sheet is entirely adequate — the layout editor copies fields into `myst.yml`.
 
+**The copy editor opens the article's issue** the day the manuscript arrives, using the *New
+article* issue form, and assigns themselves. They then make the first pass of the
+[copy editor's checklist](copy-editor-checklist.md) — Parts 1–4, on the manuscript itself — and
+chase the author for anything missing while the author is still around. When everything is in,
+they assign the layout editor on the issue in their place.
+
+**The issue's assignee is always whoever has the next action**, so "what am I waiting on" is
+answered by the issues assigned to you.
+
 **Gate:** no article enters the repository without a completed intake form.
 
 ### Stage 1 — Conversion
 
-A layout editor converts the manuscript to MyST following the existing
+The layout editor assigned on the issue converts the manuscript to MyST following the
 [layout editor guide](layout-editor-guide.md), and opens a PR: **one article, one folder, one PR**,
-`draft`-labelled.
+`draft`-labelled, with `Closes #<issue>` in its description so that merging closes the issue. Once
+the checks are green, they request the copy editor's review on the PR.
 
 **Gate:** CI green — Curvenote's metadata checks *and* the manuscript checks in §4.
 
@@ -98,15 +108,17 @@ right.
 This is the step Volumes 1–3 never really had, and it's where transcription errors get caught by the
 one person who can actually catch them.
 
-**Gate:** author signs off in a PR comment.
+**Gate:** the author approves the preview. Students don't have GitHub accounts, so they reply by
+email, and an editor ticks *Author proof* on the article's issue and pastes the reply as a comment.
 
 ### Stage 3 — Copy edit
 
-The [copy editor's checklist](copy-editor-checklist.md) against the rendered preview. By now the
-mechanical checks have passed, so the copy editor is reading for sense, proportionate claims, and
-statistics that match their figures — not hunting for missing captions.
+The copy editor's second pass: Part 5 of the [checklist](copy-editor-checklist.md), the
+read-through, against the rendered preview. Completeness and house style were settled before
+conversion and the mechanical checks have passed, so the copy editor is reading for sense,
+proportionate claims, and statistics that match their figures — not hunting for missing captions.
 
-**Gate:** checklist complete, recorded on the PR.
+**Gate:** the copy editor approves the PR.
 
 ### Stage 4 — Merge
 
@@ -252,16 +264,19 @@ Four workflows, and it is worth knowing which does what:
 - **`papers/_template/`** — copy it to `papers/<lastname>/` and fill in the `CHANGEME`s. Every field
   carries a comment explaining the trap it exists to avoid. Copying another article
   instead tends to carry its title words and metadata into yours.
-- **`docs/`** — the three role guides, carried over, with Volume 3's mistake table intact.
+- **`docs/`** — the three role guides, carried over, with a table of common mistakes.
 - **The workflows**, configured as in §5.
+- **`.github/PULL_REQUEST_TEMPLATE.md`** — links the PR to the article's issue with `Closes #`, so
+  merging closes it. The stage checklist lives on the issue only.
+- **A "New article" issue form** (`.github/ISSUE_TEMPLATE/new-article.yml`) — one issue per article,
+  opened the day the manuscript arrives. It records what has been received and which stage the
+  article has reached, and closes when the article's PR merges.
 
 **Still to build:**
 
 - **`scripts/check_article.py`** and a `lint.yml` to run it — see §4.
-- **`.github/PULL_REQUEST_TEMPLATE.md`** with the stage gates as a checklist: intake form complete,
-  CI green, author proofed, copy edited. The PR becomes the article's record.
-- **A project board**, or an issue per article. Fifteen open PRs is hard to survey; a column per
-  stage makes "what is blocked on the author" answerable at a glance.
+- **A project board** with a column per stage, fed by the article issues. Fifteen open PRs are hard
+  to survey; a board makes "what is blocked on the author" answerable at a glance.
 
 ---
 

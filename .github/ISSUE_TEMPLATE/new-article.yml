@@ -1,0 +1,147 @@
+name: New article
+description: For copy editors. Open one the day a manuscript arrives.
+title: "Article: "
+labels: ["article"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This issue is the article's tracking card. Its checklists show what has been received and
+        which stage the article has reached, and its comments are where questions for the author
+        are recorded.
+
+        **The assignee is whoever has the next action.** The copy editor who opens this issue
+        assigns themselves. When everything under *Received* is in, they swap in the layout
+        editor, who converts the article and opens its pull request.
+
+        Each stage is described in the
+        [Volume 4 workflow](https://github.com/ncssm/morgantonscientific2027/blob/main/docs/volume-4-workflow.md).
+
+        **This repository is public.** Don't put email addresses, phone numbers or anything else
+        private here. Those stay in the intake form's spreadsheet, and the layout editor copies
+        them into `myst.yml` from there.
+
+  - type: input
+    id: folder
+    attributes:
+      label: Folder name
+      description: >-
+        The lead author's last name, lowercase, with no spaces or "&". Use a hyphen for
+        co-authors, e.g. smith-jones. The article will live in papers/<this name>/.
+      placeholder: smith
+    validations:
+      required: true
+
+  - type: dropdown
+    id: section
+    attributes:
+      label: Section
+      options:
+        - Paper
+        - Essay
+    validations:
+      required: true
+
+  - type: textarea
+    id: title
+    attributes:
+      label: Title
+      description: Exactly as the author wrote it.
+    validations:
+      required: true
+
+  - type: textarea
+    id: authors
+    attributes:
+      label: Authors
+      description: >-
+        One per line, in the order they should appear, with each name exactly as it should be
+        printed. Add the school in brackets for anyone not at NCSSM.
+      placeholder: |
+        Jordan M. Smith
+        Ana Lee (Asheville High School)
+    validations:
+      required: true
+
+  - type: input
+    id: corresponding
+    attributes:
+      label: Corresponding author
+      description: The one author readers can contact after publication.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: subject
+    attributes:
+      label: Subject
+      options:
+        - Biology
+        - Chemistry
+        - Physics
+        - Engineering
+        - Public Health
+        - Computer Science
+        - Not sure yet
+    validations:
+      required: true
+
+  - type: textarea
+    id: keywords
+    attributes:
+      label: Keywords
+      description: >-
+        Up to five, one per line. Curvenote rejects more than five, and checks that no two
+        articles in the volume share a keyword, so check the other open article issues.
+      placeholder: |
+        Caffeine
+        Negative geotaxis
+
+  - type: textarea
+    id: third-party-figures
+    attributes:
+      label: Figures the authors didn't create
+      description: >-
+        Which figures, and where each came from. We publish under CC-BY, which we can only grant
+        for material we own. Write "None" if every figure is the authors' own.
+    validations:
+      required: true
+
+  - type: input
+    id: manuscript
+    attributes:
+      label: Manuscript
+      description: >-
+        A link to the manuscript in the editors' shared folder. Make sure the link is shared
+        only with the editors.
+
+  - type: checkboxes
+    id: received
+    attributes:
+      label: Received
+      description: >-
+        Tick what has arrived. Anything left unticked is something to chase now, while the author
+        is still around. No article goes into the repository until the intake form is in.
+      options:
+        - label: Intake form completed by the corresponding author
+        - label: ORCID for every author
+        - label: CRediT roles for every author
+        - label: Figures as separate, full-resolution files
+        - label: Tables as text or a spreadsheet, not images
+        - label: A .bib file, or a clearly formatted reference list
+
+  - type: checkboxes
+    id: stages
+    attributes:
+      label: Stages
+      description: >-
+        Leave these unticked when you open the issue. Tick each one here as the article passes
+        it. When the PR is opened, write "Closes #" and this issue's number in its description,
+        so merging the PR closes this issue.
+      options:
+        - label: "Handed off: layout editor assigned"
+        - label: "Conversion: PR opened with the draft label"
+        - label: "Checks: all checks green on the PR"
+        - label: "Author proof: the author has approved the Curvenote preview"
+        - label: "Copy edit: read-through done and the PR approved by the copy editor"
+        - label: "Merged: submitted to Curvenote"

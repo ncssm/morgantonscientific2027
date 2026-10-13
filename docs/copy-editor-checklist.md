@@ -1,8 +1,15 @@
 # Morganton Scientific — Copy Editor's Checklist
 
-For reviewing a submission **before** it goes to a layout editor for conversion. Work through it
-once per article, in order — the completeness checks first, because they're the ones that need the
-author, and the author is the slowest part of the loop.
+Each article gets two passes from its copy editor:
+
+1. **Before conversion**, on the manuscript itself: Parts 1–4. The completeness checks come first,
+   because they're the ones that need the author, and the author is the slowest part of the loop.
+2. **After conversion**, on the Curvenote preview: Part 5, the read-through. It ends with your
+   approval on the article's pull request, which is what allows it to merge.
+
+**When a manuscript arrives**, open a *New article* issue for it (Issues → New issue → New article)
+and assign yourself. The issue is where you record what has been received and what you're waiting
+on from the author.
 
 Anything you can't resolve, raise with the author immediately rather than passing it downstream.
 Every issue caught here costs minutes; the same issue caught after conversion costs an email and a
@@ -121,7 +128,30 @@ three volumes.
 
 ---
 
-## Part 5 — Read-through
+## Handoff to the layout editor
+
+Before you hand an article over, confirm:
+
+- [ ] Parts 1–4 complete, or every exception listed with a reason
+- [ ] Figures supplied as separate full-resolution files, named so the mapping to the text is obvious
+- [ ] Tables supplied as text or spreadsheet, not images
+- [ ] A `.bib` file, or a clearly formatted reference list
+- [ ] Author metadata complete: ORCIDs, CRediT roles, corresponding author, affiliations
+- [ ] Any third-party figures flagged, with source
+
+If something is outstanding, say so explicitly in the handoff rather than leaving it to be
+discovered. A known gap is manageable; a surprise one late in production is not.
+
+Then, on the article's issue, tick what has been received, **remove yourself as assignee and assign
+the layout editor**. They get a notification and take it from there.
+
+---
+
+## Part 5 — Read-through, after conversion
+
+The layout editor requests your review on the article's pull request once it has been converted.
+Open the Curvenote preview from the link the bot posted on the PR, and read the article as it will
+be published.
 
 Things only a careful reader catches:
 
@@ -134,19 +164,11 @@ Things only a careful reader catches:
 - [ ] **The abstract matches the paper.** Findings described in the abstract actually appear in the
       results.
 - [ ] **Acknowledgements are present** where people contributed without being authors.
+- [ ] **House style survived conversion.** Spot-check a few Part 4 items in the preview — figure
+      references, headings, species names.
 
----
+When you're done, open the PR's **Files changed** tab and choose **Review changes**:
 
-## Handoff
-
-When you pass an article to a layout editor, confirm:
-
-- [ ] Parts 1–4 complete, or every exception listed with a reason
-- [ ] Figures supplied as separate full-resolution files, named so the mapping to the text is obvious
-- [ ] Tables supplied as text or spreadsheet, not images
-- [ ] A `.bib` file, or a clearly formatted reference list
-- [ ] Author metadata complete: ORCIDs, CRediT roles, corresponding author, affiliations
-- [ ] Any third-party figures flagged, with source
-
-If something is outstanding, say so explicitly in the handoff rather than leaving it to be
-discovered. A known gap is manageable; a surprise one late in production is not.
+- **Approve** if it's ready. Then tick *Copy edit* on the article's issue.
+- **Request changes** if not, listing what needs fixing. The layout editor fixes it and asks you
+  again.
