@@ -57,7 +57,7 @@ CREDIT_ROLES = [
 SUBJECTS = ["Biology", "Chemistry", "Physics", "Engineering", "Public Health", "Computer Science"]
 SEVERITIES = {"ignore", "warn", "error"}
 
-# Fields an article's myst.yml may set; used only to catch wrongly capitalised keys.
+# Fields an article's myst.yml may set; used only to catch wrongly capitalized keys.
 KNOWN_KEYS = {
     "version", "extends", "project", "id", "title", "short_title", "subtitle", "description",
     "keywords", "authors", "subject", "abbreviations", "thumbnail", "exclude", "error_rules",
@@ -156,9 +156,9 @@ def parse_bib(text: str) -> list[dict]:
         url = re.search(r"\burl\s*=\s*[{\"]\s*([^}\"\s]+)", chunk, re.I)
         entries.append({
             "key": m.group(2),
-            "doi": normalise_doi(doi.group(1)) if doi else None,
+            "doi": normalize_doi(doi.group(1)) if doi else None,
             # Anything that identifies the work, for spotting duplicates.
-            "ids": {x for x in (doi and "doi:" + normalise_doi(doi.group(1)),
+            "ids": {x for x in (doi and "doi:" + normalize_doi(doi.group(1)),
                                 pmid and "pmid:" + pmid.group(1),
                                 url and "url:" + url.group(1).rstrip("/").lower()) if x},
             "surname": author.group(1).strip().split()[-1].strip("{}").lower() if author else None,
@@ -168,7 +168,7 @@ def parse_bib(text: str) -> list[dict]:
     return entries
 
 
-def normalise_doi(doi: str) -> str:
+def normalize_doi(doi: str) -> str:
     return re.sub(r"^(https?://(dx\.)?doi\.org/|doi:)", "", doi.strip(), flags=re.I).lower()
 
 
@@ -254,7 +254,7 @@ def check_metadata(a: Article, affiliations: set[str], volume_abbr: set[str]):
     if not year:
         a.add("error", "extends", "myst.yml must extend the volume config, e.g. "
               "'extends: ../../morganton2027.yml'. Without it the article inherits no venue, "
-              "affiliation, licence or PDF template.", f, a.myst_line(r"^extends"),
+              "affiliation, license or PDF template.", f, a.myst_line(r"^extends"),
               f"{GUIDE}#field-by-field")
 
     pid = str(p.get("id") or "")
@@ -281,7 +281,7 @@ def check_metadata(a: Article, affiliations: set[str], volume_abbr: set[str]):
     for key in [*a.myst.keys(), *p.keys()]:
         if key != key.lower() and key.lower() in KNOWN_KEYS:
             a.add("error", "key-case", f"'{key}:' should be '{key.lower()}:'. MyST ignores fields "
-                  "with the wrong capitalisation, silently.", f, a.myst_line(rf"^\s*{re.escape(key)}:"))
+                  "with the wrong capitalization, silently.", f, a.myst_line(rf"^\s*{re.escape(key)}:"))
 
     title, md_title = " ".join(str(p.get("title") or "").split()), " ".join(
         str(a.md_meta.get("title") or "").split())
@@ -603,7 +603,7 @@ def check_citations(a: Article, cites):
 
     for node, anc in cites:
         identifier = str(node.get("identifier") or "")
-        doi = normalise_doi(identifier) if re.match(r"(https?://(dx\.)?doi\.org/|10\.)", identifier) else None
+        doi = normalize_doi(identifier) if re.match(r"(https?://(dx\.)?doi\.org/|10\.)", identifier) else None
         ident = identifier if doi else str(node.get("label") or identifier)
         line = ast_line(node, anc)
         cited.add(ident)

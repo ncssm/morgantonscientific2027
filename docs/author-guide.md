@@ -37,7 +37,7 @@ often uses more.
 |---|---|
 | Conceptualization | the ideas, the research question |
 | Data curation | managing and organizing the data |
-| Formal analysis | statistics, modelling, the maths |
+| Formal analysis | statistics, modeling, the math |
 | Funding acquisition | securing grants or materials |
 | Investigation | running the experiments |
 | Methodology | designing how it would be done |
@@ -103,7 +103,7 @@ numbered, captioned and referenced.
 | **Chart / graph** | A *kind of* figure — data drawn as a picture | Bar chart, scatter plot, line graph |
 
 A chart is a figure. **A table is not.** Tables and figures are numbered in separate sequences —
-Table 1, Table 2 alongside Figure 1, Figure 2 — so labelling a table as a figure throws both
+Table 1, Table 2 alongside Figure 1, Figure 2 — so labeling a table as a figure throws both
 sequences out.
 
 ### Send tables as text, never as pictures
@@ -217,11 +217,11 @@ Don't cite in the abstract, and don't use abbreviations you haven't spelled out 
 - **Proofread your title.** It's the most visible text you'll write, it goes into the permanent DOI
   record, and it's the most expensive thing to correct after publication. A one-letter typo in a
   technical term is easy to read straight past.
-- **No full stop at the end of a title.**
+- **No period at the end of a title.**
 - **Use one form of your name**, consistently, everywhere — in the document, in your email, on your
   ORCID. "J. M. Smith", "Jordan Smith" and "Jordan M. Smith" are three different people to an indexing
   system.
-- **Species names** are italicised, with a lowercase species epithet: *Drosophila melanogaster*,
+- **Species names** are italicized, with a lowercase species epithet: *Drosophila melanogaster*,
   *Caenorhabditis elegans*, *Danio rerio*. Capital genus, lowercase species — always.
 - **American spelling** throughout: modeled, behavior, analyze, aging, characterized.
 - **Headings** shouldn't end with a colon, and shouldn't be numbered by hand.
@@ -244,8 +244,8 @@ Don't cite in the abstract, and don't use abbreviations you haven't spelled out 
 - [ ] `.bib` file included; everything cited is in it, everything in it is cited
 - [ ] DOIs included where they exist
 - [ ] Abstract under 400 words and stands alone
-- [ ] Title proofread; no full stop at the end
-- [ ] Species names italicised, lowercase epithet
+- [ ] Title proofread; no period at the end
+- [ ] Species names italicized, lowercase epithet
 
 ---
 
