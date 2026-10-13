@@ -239,6 +239,14 @@ def check_metadata(a: Article, affiliations: set[str], volume_abbr: set[str]):
               "letters and digits, with hyphens between names — no spaces, capitals or '&'.",
               f, None, f"{GUIDE}#1-folder-layout")
 
+    # Training articles must never merge: merging submits to Curvenote. This error can't be
+    # fixed, so a practice pull request can never pass the required check.
+    if a.folder.name.startswith("practice-"):
+        a.add("error", "practice", "This is a practice article (its folder starts with "
+              "'practice-'), so the check always fails here and the pull request can't be merged "
+              "and submitted to Curvenote. When this is the only error left, the practice is "
+              "done: close the pull request without merging it.", f)
+
     extends = a.myst.get("extends") or []
     extends = [extends] if isinstance(extends, str) else extends
     year = next((m.group(1) for e in extends if (m := re.search(r"morganton(\d{4})\.yml$", str(e)))),

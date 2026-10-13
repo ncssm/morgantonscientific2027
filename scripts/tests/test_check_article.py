@@ -52,7 +52,7 @@ class CheckArticleTest(unittest.TestCase):
             shutil.copytree(ROOT / folder, cls.tmp / folder)
 
         cls.articles = {}
-        for fixture, folder in (("good", "good"), ("broken", "Smith_Jones")):
+        for fixture, folder in (("good", "good"), ("good", "practice-good"), ("broken", "Smith_Jones")):
             dest = cls.tmp / "papers" / folder
             shutil.copytree(FIXTURES / fixture, dest)
             for path in dest.iterdir():
@@ -75,8 +75,13 @@ class CheckArticleTest(unittest.TestCase):
         findings = self.articles["good"].findings
         errors = [f"{f.rule}: {f.message}" for f in findings if f.severity == "error"]
         self.assertEqual(errors, [])
-        # The only warning: it shares a keyword with the broken article, on purpose.
+        # The only warning: it shares keywords with the other fixtures, on purpose.
         self.assertEqual({f.rule for f in findings}, {"keyword-clash"})
+
+    def test_practice_article_can_never_pass(self):
+        # The clean article again, under a practice- folder: the guard is its only error.
+        errors = {f.rule for f in self.articles["practice-good"].findings if f.severity == "error"}
+        self.assertEqual(errors, {"practice"})
 
     def test_every_planted_mistake_is_caught(self):
         fired = {f.rule for f in self.articles["Smith_Jones"].findings}
