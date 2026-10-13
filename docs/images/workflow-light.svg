@@ -40,7 +40,7 @@
 <text x="76" y="346" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start">Who: copy editor · On GitHub: an issue, assigned to themselves</text>
 <line x1="470" y1="324" x2="502" y2="324" stroke="#b5b2aa" stroke-width="1" stroke-dasharray="3 3"/>
 <rect x="502" y="288" width="234" height="72" rx="8" fill="#efeeea" stroke="#d9d6cf" stroke-width="1"/>
-<text x="518" y="320" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start" font-style="italic">Card lands in Intake on the board</text>
+<text x="518" y="320" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">Card lands in Intake on the board</text>
 <text x="518" y="338" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">Assigning notifies the next editor</text>
 <rect x="60" y="384" width="410" height="72" rx="8" fill="none" stroke="#b5b2aa" stroke-width="1.25"/>
 <text x="76" y="408" font-size="13" font-weight="600" fill="#1f1e1c" text-anchor="start">4. Conversion</text>
@@ -48,8 +48,8 @@
 <text x="76" y="442" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start">Who: the assigned layout editor · On GitHub: branch and PR</text>
 <line x1="470" y1="420" x2="502" y2="420" stroke="#b5b2aa" stroke-width="1" stroke-dasharray="3 3"/>
 <rect x="502" y="384" width="234" height="72" rx="8" fill="#efeeea" stroke="#d9d6cf" stroke-width="1"/>
-<text x="518" y="416" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start" font-style="italic">Card moves to In conversion</text>
-<text x="518" y="434" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">Issue and PR linked by Closes #</text>
+<text x="518" y="416" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">Issue and PR linked by Closes #</text>
+<text x="518" y="434" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start" font-style="italic">Card moves itself to Conversion</text>
 <rect x="60" y="480" width="410" height="72" rx="8" fill="none" stroke="#b5b2aa" stroke-width="1.25"/>
 <text x="76" y="504" font-size="13" font-weight="600" fill="#1f1e1c" text-anchor="start">5. Checks</text>
 <text x="76" y="522" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">Manuscript check and Curvenote checks run on every push</text>
@@ -64,8 +64,8 @@
 <text x="76" y="634" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start">Who: author, via an editor · On GitHub: a tick on the issue</text>
 <line x1="470" y1="612" x2="502" y2="612" stroke="#b5b2aa" stroke-width="1" stroke-dasharray="3 3"/>
 <rect x="502" y="576" width="234" height="72" rx="8" fill="#efeeea" stroke="#d9d6cf" stroke-width="1"/>
-<text x="518" y="608" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start" font-style="italic">needs-author label shows the wait</text>
-<text x="518" y="626" font-size="11.5" font-weight="400" fill="#6b6a66" text-anchor="start" font-style="italic">on the board</text>
+<text x="518" y="608" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">needs-author label shows the wait</text>
+<text x="518" y="626" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">on the board</text>
 <rect x="60" y="672" width="410" height="72" rx="8" fill="none" stroke="#b5b2aa" stroke-width="1.25"/>
 <text x="76" y="696" font-size="13" font-weight="600" fill="#1f1e1c" text-anchor="start">7. Copy edit</text>
 <text x="76" y="714" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">Copy editor&#x27;s read-through of the preview (checklist Part 5)</text>
@@ -81,7 +81,7 @@
 <line x1="470" y1="804" x2="502" y2="804" stroke="#b5b2aa" stroke-width="1" stroke-dasharray="3 3"/>
 <rect x="502" y="768" width="234" height="72" rx="8" fill="#efeeea" stroke="#d9d6cf" stroke-width="1"/>
 <text x="518" y="800" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">submit.yml sends it to Curvenote</text>
-<text x="518" y="818" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">Issue closes when the PR merges</text>
+<text x="518" y="818" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">Issue closes; card to Submitted</text>
 <rect x="60" y="864" width="410" height="72" rx="8" fill="none" stroke="#b5b2aa" stroke-width="1.25"/>
 <text x="76" y="888" font-size="13" font-weight="600" fill="#1f1e1c" text-anchor="start">9. Volume assembly and publish</text>
 <text x="76" y="906" font-size="11.5" font-weight="400" fill="#1f1e1c" text-anchor="start">Front matter, cover, issue DOI, print PDF, then publish</text>
