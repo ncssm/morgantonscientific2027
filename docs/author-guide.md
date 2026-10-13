@@ -20,7 +20,7 @@ schools, jobs and name changes. It is free and takes about two minutes:
 **[orcid.org/register](https://orcid.org/register)**.
 
 Register **before** you submit. It becomes part of the permanent DOI record for your article, and
-adding it afterwards is far more work than adding it now.
+adding it afterward is far more work than adding it now.
 
 Give it in full: `0000-0002-1825-0097`. If you have co-authors, every one of them needs their own.
 
@@ -250,4 +250,4 @@ Don't cite in the abstract, and don't use abbreviations you haven't spelled out 
 ---
 
 *Questions? Ask your faculty sponsor or the editorial team before submitting — every item above is
-faster to get right once than to chase afterwards.*
+faster to get right once than to chase afterward.*

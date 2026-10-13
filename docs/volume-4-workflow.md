@@ -241,7 +241,7 @@ The workflows call `curvenote/actions@v1`, which resolves to `v1.0.21` or later,
 can be submitted in the same push. Earlier versions crashed when both ran in one push
 ([curvenote/actions#57](https://github.com/curvenote/actions/issues/57)); if a `summary` job ever
 fails with `Cannot read properties of undefined`, check that the action version hasn't slipped
-backwards.
+backward.
 
 Each job also sets a distinct `comment-title`. Without it the papers and essays previews overwrite
 each other's PR comment and you can only ever see one.
