@@ -254,14 +254,17 @@ Four workflows, and it is worth knowing which does what:
   instead tends to carry its title words and metadata into yours.
 - **`docs/`** — the three role guides, carried over, with Volume 3's mistake table intact.
 - **The workflows**, configured as in §5.
+- **`.github/PULL_REQUEST_TEMPLATE.md`** — the stage gates as a checklist: intake complete, CI
+  green, author proofed, copy edited. The PR becomes the article's record.
+- **A "New article" issue form** (`.github/ISSUE_TEMPLATE/new-article.yml`) — one issue per article,
+  opened the day the manuscript arrives. It records what has been received and which stage the
+  article has reached, and closes when the article's PR merges.
 
 **Still to build:**
 
 - **`scripts/check_article.py`** and a `lint.yml` to run it — see §4.
-- **`.github/PULL_REQUEST_TEMPLATE.md`** with the stage gates as a checklist: intake form complete,
-  CI green, author proofed, copy edited. The PR becomes the article's record.
-- **A project board**, or an issue per article. Fifteen open PRs is hard to survey; a column per
-  stage makes "what is blocked on the author" answerable at a glance.
+- **A project board** with a column per stage, fed by the article issues. Fifteen open PRs are hard
+  to survey; a board makes "what is blocked on the author" answerable at a glance.
 
 ---
 

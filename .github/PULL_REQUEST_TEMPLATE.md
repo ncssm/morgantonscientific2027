@@ -4,6 +4,7 @@
 
 **Folder:** `papers/` or `essays/` —
 **Author(s):** —
+**Tracking issue:** Closes # <!-- the article's issue number, so merging closes it -->
 
 ## Stage gates
 
