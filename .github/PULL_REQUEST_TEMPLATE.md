@@ -1,25 +1,14 @@
 <!-- One article per PR. Apply the `draft` label to get a Curvenote preview. -->
 
-## Article
+Closes #<!-- the article's issue number, so merging this PR closes it -->
 
 **Folder:** `papers/` or `essays/` —
-**Author(s):** —
-**Tracking issue:** Closes # <!-- the article's issue number, so merging closes it -->
 
-## Stage gates
+The article's progress is tracked on its issue: tick each stage there, not here.
 
-See [docs/volume-4-workflow.md](../blob/main/docs/volume-4-workflow.md).
+## Notes for the reviewer
 
-- [ ] **Intake complete** — ORCID, CRediT roles, corresponding author, ≤5 keywords, subject,
-      any third-party figures flagged
-- [ ] **CI green** — Curvenote checks and the manuscript checks
-- [ ] **Author proofed** — the author has seen the Curvenote preview and confirmed the figures,
-      tables, abstract, and their own name and affiliation
-- [ ] **Copy edited** — [checklist](../blob/main/docs/copy-editor-checklist.md) complete, or every
-      exception listed below with a reason
-
-## Anything outstanding
-
-<!-- A known gap is manageable; a surprise one late in production is not. -->
+<!-- Anything the copy editor should look at closely, e.g. a table transcribed from an image.
+     A known gap is manageable; a surprise one late in production is not. -->
 
 —

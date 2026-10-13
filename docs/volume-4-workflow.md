@@ -108,7 +108,8 @@ right.
 This is the step Volumes 1–3 never really had, and it's where transcription errors get caught by the
 one person who can actually catch them.
 
-**Gate:** author signs off in a PR comment.
+**Gate:** the author approves the preview. Students don't have GitHub accounts, so they reply by
+email, and an editor ticks *Author proof* on the article's issue and pastes the reply as a comment.
 
 ### Stage 3 — Copy edit
 
@@ -263,10 +264,10 @@ Four workflows, and it is worth knowing which does what:
 - **`papers/_template/`** — copy it to `papers/<lastname>/` and fill in the `CHANGEME`s. Every field
   carries a comment explaining the trap it exists to avoid. Copying another article
   instead tends to carry its title words and metadata into yours.
-- **`docs/`** — the three role guides, carried over, with Volume 3's mistake table intact.
+- **`docs/`** — the three role guides, carried over, with a table of common mistakes.
 - **The workflows**, configured as in §5.
-- **`.github/PULL_REQUEST_TEMPLATE.md`** — the stage gates as a checklist: intake complete, CI
-  green, author proofed, copy edited. The PR becomes the article's record.
+- **`.github/PULL_REQUEST_TEMPLATE.md`** — links the PR to the article's issue with `Closes #`, so
+  merging closes it. The stage checklist lives on the issue only.
 - **A "New article" issue form** (`.github/ISSUE_TEMPLATE/new-article.yml`) — one issue per article,
   opened the day the manuscript arrives. It records what has been received and which stage the
   article has reached, and closes when the article's PR merges.
