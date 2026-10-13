@@ -271,10 +271,13 @@ Four workflows, and it is worth knowing which does what:
 - **A "New article" issue form** (`.github/ISSUE_TEMPLATE/new-article.yml`) — one issue per article,
   opened the day the manuscript arrives. It records what has been received and which stage the
   article has reached, and closes when the article's PR merges.
+- **The manuscript check** — `scripts/check_article.py`, run by `lint.yml` on every PR, as in §4.
+  Validated against Volume 3: before its editorial fixes it reproduces every count in §1, and on
+  the published volume it finds only problems that really shipped. `scripts/tests/` holds a
+  clean article and one with every mistake planted, which doubles as a practice article.
 
 **Still to build:**
 
-- **`scripts/check_article.py`** and a `lint.yml` to run it — see §4.
 - **A project board** with a column per stage, fed by the article issues. Fifteen open PRs are hard
   to survey; a board makes "what is blocked on the author" answerable at a glance.
 
@@ -301,8 +304,8 @@ defect — it was that everything arrived simultaneously with no slack behind it
 
 ## 8. Before articles start arriving
 
-1. **Write `scripts/check_article.py`** and validate it against Volume 3's fifteen articles. Highest
-   value of anything on this list.
+1. ~~**Write `scripts/check_article.py`** and validate it against Volume 3's fifteen articles.~~
+   Done; once it has run on a PR, make it a required check on `main` (Settings → Rules).
 2. **Draft the intake form** and agree with the editors that it gates submission. CRediT roles were
    the last thing holding up Volume 3, by which point the authors had scattered.
 3. **Commission the cover art early**, and get the credit line with it.

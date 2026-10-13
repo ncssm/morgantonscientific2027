@@ -1,0 +1,38 @@
+# Every mistake the manuscript check knows about, planted on purpose. The test copies this
+# folder to papers/Smith_Jones/ so the folder name is wrong too. Doubles as the practice
+# article for training new editors: fix it until the check passes.
+version: 1
+extends:
+  - ../../morgantonYEAR.yml
+site:
+  template: book-theme
+project:
+  id: morganton-YEAR-smith-jones-caffeine
+  thumbnail: images/missing.png
+  title: >-
+    Effects of Caffeine on Climbing Behavior Platforms
+  description: >-
+    Flies on *caffeine* climbed more slowly.
+  keywords:
+    - Caffeine
+    - Climbing
+    - Drosophila
+    - Diet
+    - Behavior
+    - Locomotion
+  date: 2027-02-15
+  shorttitle: Caffeine and Climbing
+  Subject: Biology
+  authors:
+    - name: Ana Lee
+      orcid: 0000-0002-1825-0098
+      affiliation: NCSSM
+      roles:
+        - Writing
+    - name: Sam Ortiz
+      affiliation: ncssm
+  abbreviations:
+    - ROS: Reactive Oxygen Species
+  error_rules:
+    - rule: doi-exists
+      severity: warning

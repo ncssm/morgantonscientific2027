@@ -351,9 +351,10 @@ Open the PR's **Checks** tab, or read the bot's comment on the PR. These are che
 | `id` in the wrong form | Curvenote preview |
 | Missing abstract, keywords, ORCID, CRediT roles or corresponding author | Curvenote preview |
 
-> **The manuscript check (`lint.yml`) is not in this repository yet.** Until it is, only the
-> Curvenote rows run automatically. Check the others by hand, and build locally (below) to see
-> warnings without digging through the CI log.
+The manuscript check posts its results as a comment on the PR, one row per problem, each with a
+link to the part of this guide that explains the fix. It updates the same comment on every push.
+**Errors** (❌) stop the PR merging once the check is required; **warnings** (⚠️), such as an
+uncited bibliography entry, are worth a look but don't block.
 
 ### What only you can check
 
@@ -381,8 +382,16 @@ npx mystmd@latest build --site
 ```
 
 Warnings print in the terminal. `npx mystmd@latest start` serves a live preview in your browser
-that updates as you edit. Either way, the PR's checks are still the record of whether an article
-passes.
+that updates as you edit.
+
+To run the manuscript check itself, from the top of the repository (it needs Python, with
+`pip install pyyaml`):
+
+```bash
+python3 scripts/check_article.py papers/smith-jones
+```
+
+Either way, the PR's checks are still the record of whether an article passes.
 
 ### Never push straight to `main`
 
