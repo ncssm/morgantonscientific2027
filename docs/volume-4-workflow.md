@@ -274,6 +274,9 @@ Four workflows, and it is worth knowing which does what:
 - **A "New article" issue form** (`.github/ISSUE_TEMPLATE/new-article.yml`) — one issue per article,
   opened the day the manuscript arrives. It records what has been received and which stage the
   article has reached, and closes when the article's PR merges.
+- **`scripts/intake_form.gs`** — a Google Apps Script that builds the intake form, apart from
+  its five file-upload questions, which Google's scripting service can't create. It built the
+  Volume 4 form; rerun it to rebuild the form for a later volume.
 - **The manuscript check** — `scripts/check_article.py`, run by `lint.yml` on every PR, as in §4.
   Validated against Volume 3: before its editorial fixes it reproduces every count in §1, and on
   the published volume it finds only problems that really shipped. `scripts/tests/` holds a

@@ -14,6 +14,9 @@
  *
  * Each run makes a new form; it never changes an existing one.
  *
+ * NCSSM's Google Workspace only runs scripts its IT team has reviewed. ITS approved this one
+ * in October 2026, and it built the Volume 4 form. A changed copy may need approving again.
+ *
  * WHAT IT CAN'T DO
  *   Google's scripting service can't create file-upload questions. The script leaves a marked
  *   placeholder in Section 9, and the log lists the five upload questions to add by hand.
