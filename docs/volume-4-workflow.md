@@ -64,7 +64,7 @@ should be detected automatically, before a human reads the article.
 The diagram in the [README](../README.md#how-an-article-gets-published) shows these stages at a glance,
 with who acts at each.
 
-### Stage 0 — Intake (at submission, not at the end)
+### Stage 0 — Intake and copy edit (at submission, not at the end)
 
 The single highest-value change. **Author metadata is collected with the manuscript, not chased in
 May.** CRediT roles were the last thing holding up Volume 3, and by then the students had scattered.
@@ -118,7 +118,7 @@ wording was agreed with the copy editor before conversion.
 **Gate:** the author approves the preview. Students don't have GitHub accounts, so they reply by
 email, and an editor checks off *Author proof* on the article's issue and pastes the reply as a comment.
 
-### Stage 3 — Copy edit
+### Stage 3 — Preview check
 
 The copy editor's second pass: Part 6 of the [checklist](copy-editor-checklist.md), a quick check
 of the rendered preview. The text was settled before conversion and the mechanical checks have
