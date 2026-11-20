@@ -406,7 +406,8 @@ name — **Article: smith-jones** means `papers/smith-jones/` and a branch calle
 `article/smith-jones`. In the PR's description, write
 `Closes #` and the issue's number, so merging the PR closes the issue. Once the checks are green,
 request the copy editor's review on the PR (**Reviewers**, in the PR's sidebar) for their
-read-through.
+preview check. The text was agreed with the author before you received it, so convert it as
+written; if something reads wrong, tell the copy editor instead of rewording it.
 
 ---
 

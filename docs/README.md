@@ -6,7 +6,7 @@ grounded in what actually needed fixing that year rather than general advice.
 | Guide | For | Covers |
 |---|---|---|
 | [Author's Guide](author-guide.md) | Student authors | What to supply and why: ORCID, CRediT roles, abbreviations, corresponding author, figures vs tables vs charts, citations, abstract, and a pre-submission checklist |
-| [Copy Editor's Checklist](copy-editor-checklist.md) | Content review | Completeness checks, figure and table handling, author metadata, and the house style guide |
+| [Copy Editor's Checklist](copy-editor-checklist.md) | Content review | Completeness checks, figure and table handling, author metadata, the house style guide and the read-through, all before conversion; then a short preview check |
 | [Layout Editor's Guide](layout-editor-guide.md) | MyST conversion | `myst.yml` and `article.md` structure, cross-references, citations, verification, the print PDF and updating it on the site, and a table of common mistakes |
 | [Volume 4 workflow](volume-4-workflow.md) | Everyone | How this volume gets made, intake through publication |
 | [Reference](reference.md) | Everyone | Identifiers, DOIs, editors, and the things that are not obvious from the code |

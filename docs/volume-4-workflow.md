@@ -83,10 +83,13 @@ That's ten minutes for the author and eliminates four of Volume 3's blockers. A 
 to a Sheet is entirely adequate — the layout editor copies fields into `myst.yml`.
 
 **The copy editor opens the article's issue** the day the manuscript arrives, using the *New
-article* issue form, and assigns themselves. They then make the first pass of the
-[copy editor's checklist](copy-editor-checklist.md) — Parts 1–4, on the manuscript itself — and
-chase the author for anything missing while the author is still around. When everything is in,
-they assign the layout editor on the issue in their place.
+article* issue form, and assigns themselves. They then do the copy edit, Parts 1–5 of the
+[copy editor's checklist](copy-editor-checklist.md), on the manuscript itself and with the author:
+completeness and house style first, then a read-through for sense, proportionate claims, and
+statistics that match their figures. The text is settled here, in the document the author wrote,
+because neither of them needs to know MyST or Curvenote to do it and a change made after
+conversion has to go back through the layout editor. When the text is settled and everything is
+in, they assign the layout editor on the issue in their place.
 
 **The issue's assignee is always whoever has the next action**, so "what am I waiting on" is
 answered by the issues assigned to you.
@@ -109,17 +112,18 @@ in the right order, tables read correctly, the abstract is right, their name and
 right.
 
 This is the step Volumes 1–3 never really had, and it's where transcription errors get caught by the
-one person who can actually catch them.
+one person who can actually catch them. It is a proof and not another round of revision: the
+wording was agreed with the copy editor before conversion.
 
 **Gate:** the author approves the preview. Students don't have GitHub accounts, so they reply by
 email, and an editor checks off *Author proof* on the article's issue and pastes the reply as a comment.
 
 ### Stage 3 — Copy edit
 
-The copy editor's second pass: Part 5 of the [checklist](copy-editor-checklist.md), the
-read-through, against the rendered preview. Completeness and house style were settled before
-conversion and the mechanical checks have passed, so the copy editor is reading for sense,
-proportionate claims, and statistics that match their figures — not hunting for missing captions.
+The copy editor's second pass: Part 6 of the [checklist](copy-editor-checklist.md), a quick check
+of the rendered preview. The text was settled before conversion and the mechanical checks have
+passed, so the copy editor is only confirming that the article came through conversion intact —
+nothing missing, references pointing at the right figures, house style unchanged.
 
 **Gate:** the copy editor approves the PR.
 
@@ -294,7 +298,7 @@ Dates are illustrative — you know the academic year. The shape matters more th
 |---|---|
 | Early autumn | Editors appointed; guides circulated to prospective authors **before** they write |
 | Rolling | Articles converted and PR'd as drafts become available |
-| Rolling | Author proof and copy edit per article |
+| Rolling | Copy edit with the author before conversion; author proof and a preview check after |
 | Late winter | **Submissions close.** Everything not converted by this date is Volume 5 |
 | Early spring | Last articles merged; front matter, cover art, editors' note |
 | Mid spring | Issue DOI from Curvenote; pagination; print PDF |

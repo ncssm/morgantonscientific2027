@@ -2,10 +2,17 @@
 
 Each article gets two passes from its copy editor:
 
-1. **Before conversion**, on the manuscript itself: Parts 1–4. The completeness checks come first,
-   because they're the ones that need the author, and the author is the slowest part of the loop.
-2. **After conversion**, on the Curvenote preview: Part 5, the read-through. It ends with your
-   approval on the article's pull request, which is what allows it to merge.
+1. **Before conversion**, on the manuscript itself: Parts 1–5. This is the whole copy edit, done
+   with the author in the Google Doc or Word file they wrote it in. The completeness checks come
+   first, because they're the ones that need the author, and the author is the slowest part of the
+   loop. The read-through comes last, once the manuscript is complete.
+2. **After conversion**, on the Curvenote preview: Part 6, a quick check that nothing changed on
+   the way in. It ends with your approval on the article's pull request, which is what allows it to
+   merge.
+
+Settle the text before conversion. Neither you nor the author needs to know how the publishing
+system works to do that, and a change to the wording after conversion has to go back through the
+layout editor.
 
 **When a manuscript arrives**, open a *New article* issue for it (Issues → New issue → New article)
 and assign yourself. Title the issue with the folder name the article will have: the lead author's
@@ -129,11 +136,34 @@ three volumes.
 
 ---
 
+## Part 5 — Read-through
+
+Once Parts 1–4 are settled, read the manuscript from start to finish, as a reader would. Raise
+what you find with the author and agree the changes in the manuscript itself.
+
+Things only a careful reader catches:
+
+- [ ] **Statistics in the text match the figures and tables.** Check a sample of p-values against
+      their source.
+- [ ] **Claims are proportionate.** A pilot study with n = 12 shouldn't read as established fact.
+- [ ] **Numbers are plausible.** A prevalence of 60% for a disease that affects about 1% of people
+      can survive every stage of review if the sentence reads fluently. Check the big numbers
+      against their source.
+- [ ] **The abstract matches the paper.** Findings described in the abstract actually appear in the
+      results.
+- [ ] **Acknowledgements are present** where people contributed without being authors.
+
+The manuscript you hand over should be the final text. After this, the author sees the article
+once more, as a preview, to confirm it was converted faithfully and not to revise it.
+
+---
+
 ## Handoff to the layout editor
 
 Before you hand an article over, confirm:
 
-- [ ] Parts 1–4 complete, or every exception listed with a reason
+- [ ] Parts 1–5 complete, or every exception listed with a reason
+- [ ] The author has agreed to every change, and the manuscript in the folder is the final text
 - [ ] Figures supplied as separate full-resolution files, named so the mapping to the text is obvious
 - [ ] Tables supplied as text or spreadsheet, not images
 - [ ] A `.bib` file, or a clearly formatted reference list
@@ -148,25 +178,22 @@ the layout editor**. They get a notification and take it from there.
 
 ---
 
-## Part 5 — Read-through, after conversion
+## Part 6 — Preview check, after conversion
 
-The layout editor requests your review on the article's pull request once it has been converted.
-Open the Curvenote preview from the link the bot posted on the PR, and read the article as it will
-be published.
+The layout editor requests your review on the article's pull request once it has been converted
+and the author has approved the preview. Open the Curvenote preview from the link the bot posted on
+the PR. You have already read the article closely, so this is a short check that the published
+version matches the manuscript you handed over:
 
-Things only a careful reader catches:
-
-- [ ] **Statistics in the text match the figures and tables.** Check a sample of p-values against
-      their source.
-- [ ] **Claims are proportionate.** A pilot study with n = 12 shouldn't read as established fact.
-- [ ] **Numbers are plausible.** A prevalence of 60% for a disease that affects about 1% of people
-      can survive every stage of review if the sentence reads fluently. Check the big numbers
-      against their source.
-- [ ] **The abstract matches the paper.** Findings described in the abstract actually appear in the
-      results.
-- [ ] **Acknowledgements are present** where people contributed without being authors.
+- [ ] **Nothing is missing or out of order.** Every section, figure and table is there.
+- [ ] **Figure and table references point at the right ones**, and each sentence still makes sense.
+- [ ] **Tables read correctly**, especially any the layout editor transcribed from an image.
 - [ ] **House style survived conversion.** Spot-check a few Part 4 items in the preview — figure
       references, headings, species names.
+
+If you spot a problem with the content itself at this stage, raise it, but expect it to be rare.
+It means a change to the manuscript, a fresh conversion of that passage and another look from the
+author.
 
 When you're done, open the PR's **Files changed** tab and choose **Review changes**:
 
