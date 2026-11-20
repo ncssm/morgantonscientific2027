@@ -19,7 +19,7 @@ STAGES = [
     "Conversion: PR opened with the draft label",
     "Checks: all checks green on the PR",
     "Author proof: the author has approved the Curvenote preview",
-    "Copy edit: preview checked and the PR approved by the copy editor",
+    "Preview check: the copy editor has checked the preview and approved the PR",
     "Merged: submitted to Curvenote",
 ]
 
@@ -37,7 +37,7 @@ def body(checked, received_all=True):
 
 class ColumnTest(unittest.TestCase):
     def test_each_stage(self):
-        expected = ["Conversion", "Conversion", "Author proof", "Copy edit", "Copy edit", "Submitted"]
+        expected = ["Conversion", "Conversion", "Author proof", "Preview check", "Preview check", "Submitted"]
         for i, column in enumerate(expected):
             with self.subTest(stage=STAGES[i]):
                 self.assertEqual(board_status.column_for(body(set(range(i + 1)))), column)
@@ -53,7 +53,7 @@ class ColumnTest(unittest.TestCase):
         self.assertEqual(board_status.column_for(body({0, 1})), "Conversion")
 
     def test_furthest_stage_wins_even_with_gaps(self):
-        self.assertEqual(board_status.column_for(body({0, 3})), "Copy edit")
+        self.assertEqual(board_status.column_for(body({0, 3})), "Preview check")
 
     def test_no_checklist(self):
         self.assertEqual(board_status.column_for("An issue written by hand."), "Intake")
