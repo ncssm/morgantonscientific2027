@@ -28,8 +28,8 @@ STAGE_TO_COLUMN = [
     ("Handed off", "Conversion"),
     ("Conversion", "Conversion"),
     ("Checks", "Author proof"),
-    ("Author proof", "Copy edit"),
-    ("Copy edit", "Copy edit"),
+    ("Author proof", "Preview check"),
+    ("Preview check", "Preview check"),
     ("Merged", "Submitted"),
 ]
 NOTHING_CHECKED = "Intake"

@@ -197,6 +197,6 @@ author.
 
 When you're done, open the PR's **Files changed** tab and choose **Review changes**:
 
-- **Approve** if it's ready. Then check off *Copy edit* on the article's issue.
+- **Approve** if it's ready. Then check off *Preview check* on the article's issue.
 - **Request changes** if not, listing what needs fixing. The layout editor fixes it and asks you
   again.
