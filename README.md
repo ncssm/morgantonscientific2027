@@ -16,7 +16,7 @@ or a requested change sends the article back to the layout editor, on the same p
      that script and run `python3 scripts/workflow_diagram.py`; don't edit the SVGs by hand. -->
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/images/workflow-dark.svg">
-  <img alt="The nine stages: submission and the manuscript folder before GitHub, then intake, conversion, checks, author proof, copy edit and merge on the article's issue and pull request, then volume assembly. A failed check or a requested change loops back to conversion." src="docs/images/workflow-light.svg">
+  <img alt="The nine stages: submission and the manuscript folder before GitHub, then intake and the copy edit, conversion, checks, author proof, the copy editor's preview check and merge on the article's issue and pull request, then volume assembly. A failed check or a requested change loops back to conversion." src="docs/images/workflow-light.svg">
 </picture>
 
 The [Volume 4 workflow](docs/volume-4-workflow.md) explains each step, and the role guides below
