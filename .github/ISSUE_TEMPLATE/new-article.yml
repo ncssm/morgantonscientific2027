@@ -142,5 +142,5 @@ body:
         - label: "Conversion: PR opened with the draft label"
         - label: "Checks: all checks green on the PR"
         - label: "Author proof: the author has approved the Curvenote preview"
-        - label: "Copy edit: read-through done and the PR approved by the copy editor"
+        - label: "Copy edit: preview checked and the PR approved by the copy editor"
         - label: "Merged: submitted to Curvenote"

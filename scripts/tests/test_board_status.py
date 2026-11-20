@@ -19,7 +19,7 @@ STAGES = [
     "Conversion: PR opened with the draft label",
     "Checks: all checks green on the PR",
     "Author proof: the author has approved the Curvenote preview",
-    "Copy edit: read-through done and the PR approved by the copy editor",
+    "Copy edit: preview checked and the PR approved by the copy editor",
     "Merged: submitted to Curvenote",
 ]
 
