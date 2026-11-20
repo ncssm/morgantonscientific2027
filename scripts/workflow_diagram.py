@@ -18,7 +18,7 @@ TITLE = "An article loops until it is right, and only the merge submits it"
 STAGES = [
     ("1. Submission", "Student author fills in the intake Google Form",
      "Who: student author · Not on GitHub: a Google Form",
-     ["~Answers land in the intake Sheet", "~Uploads land in the form's Drive"]),
+     ["Answers land in the intake Sheet", "Uploads land in the form's Drive"]),
     ("2. Manuscript folder", "Editor puts manuscript, figures, .bib and code in one folder",
      "Who: an editor · Not on GitHub: a shared Drive folder",
      ["Nothing: done by hand, because", "uploads arrive sorted by question"]),

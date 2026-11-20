@@ -24,8 +24,8 @@
 <text x="76" y="154" font-size="11.5" font-weight="400" fill="#a3a19b" text-anchor="start">Who: student author · Not on GitHub: a Google Form</text>
 <line x1="470" y1="132" x2="502" y2="132" stroke="#77756f" stroke-width="1" stroke-dasharray="3 3"/>
 <rect x="502" y="96" width="234" height="72" rx="8" fill="#262522" stroke="#4a4844" stroke-width="1"/>
-<text x="518" y="128" font-size="11.5" font-weight="400" fill="#a3a19b" text-anchor="start" font-style="italic">Answers land in the intake Sheet</text>
-<text x="518" y="146" font-size="11.5" font-weight="400" fill="#a3a19b" text-anchor="start" font-style="italic">Uploads land in the form&#x27;s Drive</text>
+<text x="518" y="128" font-size="11.5" font-weight="400" fill="#ecebe7" text-anchor="start">Answers land in the intake Sheet</text>
+<text x="518" y="146" font-size="11.5" font-weight="400" fill="#ecebe7" text-anchor="start">Uploads land in the form&#x27;s Drive</text>
 <rect x="60" y="192" width="410" height="72" rx="8" fill="none" stroke="#77756f" stroke-width="1.25" stroke-dasharray="5 4"/>
 <text x="76" y="216" font-size="13" font-weight="600" fill="#ecebe7" text-anchor="start">2. Manuscript folder</text>
 <text x="76" y="234" font-size="11.5" font-weight="400" fill="#ecebe7" text-anchor="start">Editor puts manuscript, figures, .bib and code in one folder</text>
